@@ -13,24 +13,45 @@ document.addEventListener('DOMContentLoaded', function() {
             const audioElement = document.getElementById('background-music');
             
             if (playButton && audioElement) {
-                event.preventDefault(); // Prevent page scrolling
+                // Prevent the default spacebar behavior (page scrolling)
+                event.preventDefault();
+                event.stopPropagation();
                 
                 console.log('Spacebar pressed - toggling music playback');
-                  // Use the play button click handler for consistent behavior
-                // This ensures all the proper event handlers run
-                playButton.click();
-                
-                // Also manually save state to localStorage for redundancy
-                try {
-                    // We need to check again after clicking because the state may have changed
-                    setTimeout(() => {
-                        localStorage.setItem('musicIsPlaying', !audioElement.paused);
-                    }, 100); 
-                } catch (e) {
-                    console.warn('Could not save music state');
+
+                // Direct audio control approach instead of click simulation
+                if (audioElement.paused) {
+                    // Play the audio
+                    const playPromise = audioElement.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            console.log('Spacebar - Audio played successfully');
+                            // Update button state
+                            playButton.textContent = 'Pause Music';
+                            playButton.classList.add('active');
+                            // Save state
+                            localStorage.setItem('musicIsPlaying', 'true');
+                        }).catch(err => {
+                            console.error('Spacebar play error:', err);
+                            // Fallback to button click
+                            playButton.click();
+                        });
+                    }
+                } else {
+                    // Pause the audio
+                    audioElement.pause();
+                    console.log('Spacebar - Audio paused successfully');
+                    // Update button state
+                    playButton.textContent = 'Play Music';
+                    playButton.classList.remove('active');
+                    // Save state
+                    localStorage.setItem('musicIsPlaying', 'false');
+                    
+                    // If the standard pause didn't work, use robust pause
+                    if (!audioElement.paused && window.robustAudioPause) {
+                        window.robustAudioPause();
+                    }
                 }
-                
-                event.preventDefault(); // Prevent page scrolling
             }
         }
         

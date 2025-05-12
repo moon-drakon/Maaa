@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
             console.warn('Pause fix: Required elements not found');
             return;
         }
+          console.log('Applying robust pause functionality');
         
-        console.log('Applying robust pause functionality');
-        
-        // Create a reliable pause function that ensures the pause actually happens        function robustPause() {
+        // Create a reliable pause function that ensures the pause actually happens        
+        function robustPause() {
             console.log('Robust pause called');
             
             try {
@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Double-check that pause worked
                 if (!audioElement.paused) {
                     console.warn('Standard pause failed, trying fallback method');
+                    
+                    // Make multiple pause attempts with slight delays
+                    setTimeout(() => audioElement.pause(), 10);
+                    setTimeout(() => audioElement.pause(), 50);
+                    setTimeout(() => audioElement.pause(), 100);
                     
                     // Fallback method 1: Force pause by setting currentTime
                     const currentPosition = audioElement.currentTime;
@@ -84,9 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (musicActivity) {
                 musicActivity.classList.remove('visible');
             }
-        }
-          // Make robust pause function available globally
+        }        // Make robust pause function available globally - ensure it's accessible to other scripts
         window.robustAudioPause = robustPause;
+        
+        // Also add it as a property of the audioElement for easy access
+        audioElement.robustPause = robustPause;
         
         // Replace the click handler on the play button
         playButton.addEventListener('click', function(e) {
