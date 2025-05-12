@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother's Day Tribute Website - Path Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f2f4;
+            color: #333;
+        }
+        h1 {
+            color: #d6336c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        h2 {
+            color: #f06595;
+            border-bottom: 2px solid #f06595;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+        .resource-item {
+            padding: 10px;
+            border-left: 3px solid transparent;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .resource-item.success {
+            border-left-color: #37b24d;
+            background-color: #ebfbee;
+        }
+        .resource-item.failure {
+            border-left-color: #f03e3e;
+            background-color: #fff5f5;
+        }
+        .status {
+            flex: 0 0 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .status.success {
+            color: #37b24d;
+        }
+        .status.failure {
+            color: #f03e3e;
+        }
+        .path {
+            flex: 1;
+            font-family: monospace;
+            background-color: rgba(0,0,0,0.05);
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f06595;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #d6336c;
+        }
+        .summary {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mother's Day Tribute - Resource Verification</h1>
+        
+        <div class="section">
+            <h2>HTML Files</h2>
+            <ul class="resource-list" id="html-list">
+                <!-- Will be filled by JavaScript -->
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>CSS Files</h2>
+            <ul class="resource-list" id="css-list">
+                <!-- Will be filled by JavaScript -->
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>JavaScript Files</h2>
+            <ul class="resource-list" id="js-list">
+                <!-- Will be filled by JavaScript -->
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Image Files</h2>
+            <ul class="resource-list" id="image-list">
+                <!-- Will be filled by JavaScript -->
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Audio Files</h2>
+            <ul class="resource-list" id="audio-list">
+                <!-- Will be filled by JavaScript -->
+            </ul>
+        </div>
+        
+        <div class="summary" id="summary">
+            Checking resources...
+        </div>
+        
+        <div class="navigation">
+            <a href="index.html" class="btn">Go to Home Page</a>
+            <a href="gallery.html" class="btn">Go to Gallery</a>
+            <a href="dedication.html" class="btn">Go to Dedication</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Files to check
+            const files = {
+                html: [
+                    'index.html',
+                    'gallery.html',
+                    'dedication.html'
+                ],
+                css: [
+                    'styles.css',
+                    'effects.css',
+                    'advanced-animations.css',
+                    'special-effects.css',
+                    'music-visualizer.css',
+                    '3d-visualization.css',
+                    'enhanced-readability.css',
+                    'music-controls.css',
+                    'welcome-notice.css',
+                    'centered-layout.css',
+                    'animated-border.css',
+                    'background-effects.css',
+                    'smooth-transitions.css',
+                    'page-loader.css'
+                ],
+                js: [
+                    'script.js',
+                    'audio-preloader.js',
+                    'image-preloader.js',
+                    'site-music.js',
+                    'page-transitions.js',
+                    'advanced-effects.js',
+                    'special-effects.js',
+                    'background-effects.js',
+                    '3d-visualization.js',
+                    'music-visualizer.js',
+                    'particle-system.js',
+                    'welcome-notice.js'
+                ],
+                images: [
+                    'images/mom-portrait.webp',
+                    'images/mother-child.png',
+                    'images/photo1.jpg',
+                    'images/photo2.jpg',
+                    'images/photo3.webp',
+                    'images/photo4.jpg',
+                    'images/photo5.jpg',
+                    'images/photo6.jpg',
+                    'images/photo7.jpg',
+                    'images/photo8.jpg',
+                    'images/photo9.jpg',
+                    'images/photo10.jpg'
+                ],
+                audio: [
+                    'audio/moms-song.mp3'
+                ]
+            };
+            
+            // Check each file
+            let totalChecked = 0;
+            let totalSuccess = 0;
+            
+            // Check HTML files
+            checkFilesOfType('html', files.html);
+            
+            // Check CSS files
+            checkFilesOfType('css', files.css);
+            
+            // Check JS files
+            checkFilesOfType('js', files.js);
+            
+            // Check image files
+            checkFilesOfType('image', files.images);
+            
+            // Check audio files
+            checkFilesOfType('audio', files.audio);
+            
+            function checkFilesOfType(type, fileList) {
+                const listElement = document.getElementById(`${type}-list`);
+                
+                fileList.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'resource-item';
+                    listItem.innerHTML = `
+                        <span class="status">Checking...</span>
+                        <span class="path">${file}</span>
+                    `;
+                    listElement.appendChild(listItem);
+                    
+                    checkResourceExists(file, listItem);
+                });
+            }
+            
+            function checkResourceExists(url, listItem) {
+                totalChecked++;
+                
+                fetch(url, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            listItem.classList.add('success');
+                            listItem.querySelector('.status').textContent = 'OK';
+                            listItem.querySelector('.status').classList.add('success');
+                            totalSuccess++;
+                        } else {
+                            listItem.classList.add('failure');
+                            listItem.querySelector('.status').textContent = 'FAILED';
+                            listItem.querySelector('.status').classList.add('failure');
+                        }
+                        updateSummary();
+                    })
+                    .catch(error => {
+                        listItem.classList.add('failure');
+                        listItem.querySelector('.status').textContent = 'ERROR';
+                        listItem.querySelector('.status').classList.add('failure');
+                        updateSummary();
+                    });
+            }
+            
+            function updateSummary() {
+                const totalFiles = Object.values(files).flat().length;
+                const summaryElement = document.getElementById('summary');
+                
+                if (totalChecked === totalFiles) {
+                    if (totalSuccess === totalFiles) {
+                        summaryElement.textContent = '✓ All resources loaded successfully!';
+                        summaryElement.style.color = '#37b24d';
+                    } else {
+                        summaryElement.textContent = `⚠ ${totalSuccess} of ${totalFiles} resources loaded successfully. Fix the errors above.`;
+                        summaryElement.style.color = '#f03e3e';
+                    }
+                } else {
+                    summaryElement.textContent = `Checking resources: ${totalChecked} of ${totalFiles} checked...`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

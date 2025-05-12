@@ -1,0 +1,67 @@
+/* Adds a beautifully animated border to message containers */
+
+/* Animated border effect for special containers */
+.message-container.glitter {
+    position: relative;
+    overflow: visible;
+}
+
+/* Create animated border */
+.message-container.glitter::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, 
+        #ff70a6, #ff9770, #ffd670, #e9ff70,
+        #70d6ff, #ff70a6, #ff9770);
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    animation: glowing 20s linear infinite;
+    opacity: 0.7;
+}
+
+/* Animated movement of gradient */
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* Add floating animation to dedication photo */
+.dedication-photo {
+    animation: gentle-float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+}
+
+/* Enhanced 3D pop effect for signature */
+.pop-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.pop-3d:hover {
+    transform: scale(1.05) translateZ(20px);
+}
+
+.pop-3d p {
+    transition: all 0.3s ease;
+}
+
+.pop-3d:hover p {
+    color: #ff70a6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,132 @@
+/* Enhanced text readability styles */
+
+/* General text improvements */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Improved message container for better readability */
+.message-container {
+    position: relative;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+}
+
+/* Better text formatting */
+.promise-message {
+    width: 100%;
+    display: block;
+    text-align: left;
+}
+
+.animated-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    width: 100%;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+}
+
+/* Style for quotes */
+.animated-text span {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+    position: relative;
+    padding-left: 20px;
+    clear: both;
+}
+
+.animated-text span:before {
+    content: "\201C";
+    position: absolute;
+    left: 0;
+    top: -5px;
+    font-size: 1.8rem;
+    color: #ff70a6;
+    font-family: Georgia, serif;
+}
+
+/* Make sure elephant and ants story text is visible */
+.typewriter {
+    display: inline;
+    overflow: visible;
+    white-space: normal;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+/* Better paragraph spacing */
+.animated-text p {
+    margin-bottom: 15px;
+}
+
+/* Enhance signature */
+.signature {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #8e44ad;
+    font-size: 1.2rem;
+    text-align: right;
+    padding-right: 20px;
+    border-top: 1px solid rgba(142, 68, 173, 0.2);
+    padding-top: 15px;
+}
+
+/* Custom blockquote style for the elephants and ants story */
+.story-highlight {
+    background: rgba(255, 112, 166, 0.15); /* Slightly darker background */
+    border-left: 5px solid #ff70a6; /* Thicker border */
+    padding: 20px 25px; /* More padding */
+    margin: 20px 0; /* More margin */
+    border-radius: 0 10px 10px 0;
+    position: relative;
+    z-index: 5; /* Ensure story highlight is above animations */
+    box-shadow: 0 5px 15px rgba(255, 112, 166, 0.2); /* Subtle shadow */
+}
+
+/* Letter styling */
+.letter-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.flip-card-front, .flip-card-back {
+    padding: 2rem;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.flip-card-front p, .flip-card-back p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .animated-text {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+    
+    .message-container {
+        padding: 1.5rem;
+    }
+    
+    .signature {
+        margin-top: 1.5rem;
+    }
+}
