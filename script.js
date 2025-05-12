@@ -10,78 +10,64 @@ document.addEventListener('DOMContentLoaded', function() {
     handlePageLoader();
 });
 
-
 function createFallingElements() {
     const heartsContainer = document.querySelector('.hearts-container');
     const flowersContainer = document.querySelector('.flowers-container');
-    
     
     for (let i = 0; i < 40; i++) {
         createHeart(heartsContainer);
     }
     
-    
     for (let i = 0; i < 25; i++) {
         createFlower(flowersContainer);
     }
     
-    
-    setInterval(() => createHeart(heartsContainer), 1500); 
-    setInterval(() => createFlower(flowersContainer), 2000); 
+    setInterval(() => createHeart(heartsContainer), 1500);
+    setInterval(() => createFlower(flowersContainer), 2000);
 }
 
 function createHeart(container) {
     const heart = document.createElement('div');
     
-    
-    
     let leftPosition;
-    if (Math.random() > 0.6) { 
+    if (Math.random() > 0.6) {
         leftPosition = Math.random() > 0.5 ? 
             Math.random() * 15 : 
-            85 + (Math.random() * 15); 
+            85 + (Math.random() * 15);
     } else {
         leftPosition = Math.random() * 100;
     }
     
-    
-    const useEmoji = Math.random() > 0.5; 
+    const useEmoji = Math.random() > 0.5;
     
     if (useEmoji) {
         heart.classList.add('heart-emoji');
-        
         const heartEmojis = ['❤️', '💕', '💖', '💗'];
         heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
     } else {
         heart.classList.add('heart');
     }
     
+    const size = Math.random() * 25 + 10;
     
-    const size = Math.random() * 25 + 10; 
-    
-    
-    const animationDuration = Math.random() * 12 + 10; 
+    const animationDuration = Math.random() * 12 + 10;
     const delay = Math.random() * 5;
     
     heart.style.width = `${size}px`;
     heart.style.height = `${size}px`;
     heart.style.left = `${leftPosition}%`;
     
+    heart.style.opacity = (Math.random() * 0.3 + 0.4).toString();
     
-    heart.style.opacity = (Math.random() * 0.3 + 0.4).toString(); 
-    
-    
-    const animationType = Math.random() > 0.7 ? 'floatSides' : 'float'; 
+    const animationType = Math.random() > 0.7 ? 'floatSides' : 'float';
     heart.style.animation = `${animationType} ${animationDuration}s linear ${delay}s infinite`;
     heart.style.color = getRandomPinkShade();
-    
     
     if (Math.random() > 0.7) {
         heart.classList.add('pulse');
     }
     
     container.appendChild(heart);
-    
     
     setTimeout(() => {
         if (container.contains(heart)) {
@@ -94,16 +80,14 @@ function createFlower(container) {
     const flower = document.createElement('div');
     flower.classList.add('flower');
     
-    
     let leftPosition;
-    if (Math.random() > 0.5) { 
+    if (Math.random() > 0.5) {
         leftPosition = Math.random() > 0.5 ? 
             Math.random() * 20 : 
-            80 + (Math.random() * 20); 
+            80 + (Math.random() * 20);
     } else {
         leftPosition = Math.random() * 100;
     }
-    
     
     const size = Math.random() * 20 + 15;
     const animationDuration = Math.random() * 12 + 12;
@@ -112,14 +96,12 @@ function createFlower(container) {
     flower.style.width = `${size}px`;
     flower.style.height = `${size}px`;
     flower.style.left = `${leftPosition}%`;
-    
-    flower.style.opacity = (Math.random() * 0.3 + 0.3).toString(); 
+    flower.style.opacity = (Math.random() * 0.3 + 0.3).toString();
     
     const animationType = Math.random() > 0.3 ? 'float' : 'floatSides';
     flower.style.animation = `${animationType} ${animationDuration}s linear ${delay}s infinite`;
     
     container.appendChild(flower);
-    
     
     setTimeout(() => {
         if (container.contains(flower)) {
@@ -136,7 +118,6 @@ function getRandomPinkShade() {
     return shades[Math.floor(Math.random() * shades.length)];
 }
 
-
 function createFloatingBalloons() {
     const body = document.querySelector('body');
     const balloonColors = [
@@ -145,11 +126,9 @@ function createFloatingBalloons() {
         '#9370db', '#b19cd9', '#dda0dd', '#d8bfd8', '#e6e6fa'
     ];
     
-    
     for (let i = 0; i < 10; i++) {
         const balloon = document.createElement('div');
         balloon.classList.add('balloon');
-        
         
         const size = Math.random() * 20 + 30;
         const left = Math.random() * 100;
@@ -167,18 +146,15 @@ function createFloatingBalloons() {
     }
 }
 
-
 function handleLetterSection() {
     const scrollButton = document.getElementById('scroll-button');
     const letterSection = document.getElementById('letter-section');
     
     if (scrollButton && letterSection) {
-        
         scrollButton.addEventListener('click', () => {
             letterSection.classList.add('visible');
             letterSection.scrollIntoView({ behavior: 'smooth' });
         });
-        
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -192,7 +168,6 @@ function handleLetterSection() {
     }
 }
 
-
 function initializeCarousel() {
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
@@ -202,9 +177,7 @@ function initializeCarousel() {
     let currentIndex = 0;
     const totalItems = items.length;
     
-    
     updateCarousel();
-    
     
     prevButton.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + totalItems) % totalItems;
@@ -216,26 +189,21 @@ function initializeCarousel() {
         updateCarousel();
     });
     
-    
     items.forEach(item => {
         item.addEventListener('click', () => {
             const index = parseInt(item.dataset.index);
             if (index !== currentIndex) {
-                
                 currentIndex = index;
                 updateCarousel();
             }
         });
     });
     
-    
     function updateCarousel() {
         items.forEach((item, index) => {
             item.classList.remove('active', 'prev', 'next', 'farPrev', 'farNext');
             
-            
             let position = (index - currentIndex + totalItems) % totalItems;
-            
             
             if (position === 0) {
                 item.classList.add('active');
@@ -251,12 +219,10 @@ function initializeCarousel() {
         });
     }
     
-    
     let autoRotate = setInterval(() => {
         currentIndex = (currentIndex + 1) % totalItems;
         updateCarousel();
     }, 5000);
-    
     
     carousel.addEventListener('mouseenter', () => {
         clearInterval(autoRotate);
@@ -270,20 +236,17 @@ function initializeCarousel() {
     });
 }
 
-
 function handlePageLoader() {
     const loader = document.querySelector('.page-loader');
     if (loader) {
-        
         setTimeout(() => {
             loader.classList.add('loader-hidden');
-            
             
             loader.addEventListener('transitionend', () => {
                 if (document.body.contains(loader)) {
                     document.body.removeChild(loader);
                 }
             });
-        }, 2000); 
+        }, 2000);
     }
 }

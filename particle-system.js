@@ -1,5 +1,3 @@
-
-
 class ParticleSystem {
     constructor(options = {}) {
         this.options = {
@@ -27,10 +25,8 @@ class ParticleSystem {
     }
     
     init() {
-        
         this.canvas = document.createElement('canvas');
         this.canvas.className = 'particle-system';
-        
         
         this.canvas.style.position = 'absolute';
         this.canvas.style.top = '0';
@@ -40,24 +36,17 @@ class ParticleSystem {
         this.canvas.style.zIndex = '-1';
         this.canvas.style.pointerEvents = 'none';
         
-        
         this.options.container.appendChild(this.canvas);
-        
         
         this.ctx = this.canvas.getContext('2d');
         
-        
         this.resizeCanvas();
-        
         
         this.createParticles();
         
-        
         this.animate();
         
-        
         window.addEventListener('resize', () => this.resizeCanvas());
-        
         
         this.mouse = { x: null, y: null, radius: 100 };
         
@@ -74,9 +63,7 @@ class ParticleSystem {
     }
     
     createParticles() {
-        
         this.particles = [];
-        
         
         for (let i = 0; i < this.options.count; i++) {
             this.particles.push({
@@ -97,7 +84,6 @@ class ParticleSystem {
         this.canvas.width = this.containerRect.width;
         this.canvas.height = this.containerRect.height;
         
-        
         if (this.particles.length > 0) {
             this.createParticles();
         }
@@ -106,14 +92,11 @@ class ParticleSystem {
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        
         for (let i = 0; i < this.particles.length; i++) {
             const p = this.particles[i];
             
-            
             p.x += p.speedX;
             p.y += p.speedY;
-            
             
             if (p.x > this.canvas.width) {
                 p.x = 0;
@@ -127,21 +110,18 @@ class ParticleSystem {
                 p.y = this.canvas.height;
             }
             
-            
             if (this.mouse.x !== null && this.mouse.y !== null) {
                 const dx = p.x - this.mouse.x;
                 const dy = p.y - this.mouse.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < this.mouse.radius) {
-                    
                     const pushFactor = 1 - (distance / this.mouse.radius);
                     p.x += dx * pushFactor * 0.02;
                     p.y += dy * pushFactor * 0.02;
                     p.active = true;
                 }
             }
-            
             
             this.ctx.beginPath();
             this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -150,19 +130,15 @@ class ParticleSystem {
             this.ctx.fill();
             this.ctx.globalAlpha = 1;
             
-            
             if (this.options.linked) {
                 for (let j = i + 1; j < this.particles.length; j++) {
                     const p2 = this.particles[j];
-                    
                     
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    
                     if (distance < this.options.linkDistance) {
-                        
                         const opacity = 1 - (distance / this.options.linkDistance);
                         
                         this.ctx.beginPath();
@@ -200,13 +176,10 @@ class ParticleSystem {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
     if (currentPage === 'index.html' || currentPage === '') {
-        
         new ParticleSystem({
             container: document.querySelector('.hero-section') || document.body,
             count: 30,
@@ -218,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0.6
         });
     } else if (currentPage === 'gallery.html') {
-        
         new ParticleSystem({
             container: document.body,
             count: 40,
@@ -230,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0.5
         });
     } else if (currentPage === 'dedication.html') {
-        
         new ParticleSystem({
             container: document.body,
             count: 50,

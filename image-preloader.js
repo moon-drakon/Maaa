@@ -1,13 +1,7 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    
     preloadVisibleImages();
-    
-    
     preloadLinkedPageImages();
 });
-
 
 function preloadVisibleImages() {
     const images = document.querySelectorAll('img');
@@ -16,12 +10,10 @@ function preloadVisibleImages() {
             preloadImage(img.getAttribute('src'));
         }
         
-        
         if (img.getAttribute('data-src')) {
             preloadImage(img.getAttribute('data-src'));
         }
     });
-    
     
     const elementsWithBgImage = document.querySelectorAll('[style*="background-image"]');
     elementsWithBgImage.forEach(el => {
@@ -33,20 +25,15 @@ function preloadVisibleImages() {
     });
 }
 
-
 function preloadLinkedPageImages() {
-    
     const links = document.querySelectorAll('a[href^="index.html"], a[href^="gallery.html"], a[href^="dedication.html"], a[href="./"], a[href="/"]');
     
-    
     if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
-        
         for (let i = 1; i <= 10; i++) {
             preloadImage(`images/photo${i}.jpg`, true);
         }
     }
 }
-
 
 function preloadImage(url, lowPriority = false) {
     if (!url) return;

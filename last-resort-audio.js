@@ -1,12 +1,9 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Last resort audio player initializing...');
-    
     
     setTimeout(initializeLastResortAudio, 1500);
     
     function initializeLastResortAudio() {
-        
         const playButton = document.getElementById('play-music-button');
         const existingAudio = document.getElementById('background-music');
         
@@ -14,23 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Last resort audio: Play button not found');
             return;
         }
-          
         let emergencyAudio = null;
-        
         
         playButton.addEventListener('click', function() {
             console.log('Last resort audio: Play button clicked');
             
             try {
-                
                 if (existingAudio && !existingAudio.error) {
-                    
                     return;
                 }
                 
-                
                 if (emergencyAudio) {
-                    
                     if (!emergencyAudio.paused) {
                         console.log('Last resort audio: Pausing existing emergency audio');
                         emergencyAudio.pause();
@@ -38,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         playButton.classList.remove('active');
                         return;
                     }
-                    
                     
                     console.log('Last resort audio: Resuming existing emergency audio');
                     const savedTime = parseFloat(localStorage.getItem('musicCurrentTime') || '0');
@@ -62,13 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                
                 console.log('Last resort audio: Creating new audio element');
                 emergencyAudio = new Audio('audio/moms-song.mp3');
                 emergencyAudio.id = 'emergency-audio';
                 emergencyAudio.loop = true;
                 emergencyAudio.volume = 0.7;
-                
                 
                 const savedTime = parseFloat(localStorage.getItem('musicCurrentTime') || '0');
                 if (!isNaN(savedTime)) {
@@ -81,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }, {once: true});
                 }
-                
                 
                 const playPromise = emergencyAudio.play();
                 if (playPromise !== undefined) {

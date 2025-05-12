@@ -1,7 +1,5 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music continuity manager initializing...');
-    
     
     setTimeout(setupMusicContinuity, 500);
     
@@ -12,15 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        
         audioElement.addEventListener('loadedmetadata', function() {
             console.log('Audio metadata loaded, ready for time setting');
             restoreAudioPosition();
         });
         
-        
         restoreAudioPosition();
-        
         
         setTimeout(restoreAudioPosition, 1000);
         setTimeout(restoreAudioPosition, 2000);
@@ -29,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isNaN(savedTime) && savedTime > 0) {
                 try {
                     if (Math.abs(audioElement.currentTime - savedTime) > 0.5) {
-                        
                         console.log(`Setting audio time to ${savedTime} (was ${audioElement.currentTime})`);
                         audioElement.currentTime = savedTime;
-                        
                         
                         setTimeout(() => {
                             if (Math.abs(audioElement.currentTime - savedTime) > 1) {
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 } catch (e) {
                     console.warn('Could not set audio position:', e);
-                    
                     
                     setTimeout(() => {
                         try {
@@ -56,12 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        
         document.querySelectorAll('a').forEach(function(link) {
-            
             if (link.href && link.href.indexOf(window.location.origin) === 0) {
                 link.addEventListener('click', function(e) {
-                    
                     if (audioElement) {
                         console.log('Saving music state before link navigation');
                         localStorage.setItem('musicCurrentTime', audioElement.currentTime);

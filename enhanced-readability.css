@@ -1,11 +1,7 @@
-
-
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
-
 
 .message-container {
     position: relative;
@@ -18,7 +14,6 @@ body {
     width: 100%;
     text-align: left;
 }
-
 
 .promise-message {
     width: 100%;
@@ -36,7 +31,6 @@ body {
     letter-spacing: 0.3px;
     word-spacing: 1px;
 }
-
 
 .animated-text span {
     display: block;
@@ -58,7 +52,6 @@ body {
     font-family: Georgia, serif;
 }
 
-
 .typewriter {
     display: inline;
     overflow: visible;
@@ -67,11 +60,9 @@ body {
     word-wrap: break-word;
 }
 
-
 .animated-text p {
     margin-bottom: 15px;
 }
-
 
 .signature {
     margin-top: 2rem;
@@ -84,18 +75,16 @@ body {
     padding-top: 15px;
 }
 
-
 .story-highlight {
-    background: rgba(255, 112, 166, 0.15); 
-    border-left: 5px solid #ff70a6; 
-    padding: 20px 25px; 
-    margin: 20px 0; 
+    background: rgba(255, 112, 166, 0.15);
+    border-left: 5px solid #ff70a6;
+    padding: 20px 25px;
+    margin: 20px 0;
     border-radius: 0 10px 10px 0;
     position: relative;
-    z-index: 5; 
-    box-shadow: 0 5px 15px rgba(255, 112, 166, 0.2); 
+    z-index: 5;
+    box-shadow: 0 5px 15px rgba(255, 112, 166, 0.2);
 }
-
 
 .letter-container {
     max-width: 800px;
@@ -114,7 +103,6 @@ body {
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
-
 
 @media (max-width: 768px) {
     .animated-text {

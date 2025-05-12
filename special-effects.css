@@ -1,6 +1,6 @@
+/* Special visual effects for Mother's Day website */
 
-
-
+/* Enhanced Snow Effect */
 .snowflakes {
     position: fixed;
     top: 0;
@@ -17,23 +17,23 @@
     height: 10px;
     background: white;
     border-radius: 50%;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Softer glow */
     opacity: 0;
     animation: snowfall linear infinite;
-    pointer-events: none; 
+    pointer-events: none; /* Ensure they don't interfere with clicks */
 }
 
-
+/* Add subtle glow effect to snowflakes */
 .snowflake:nth-child(3n) {
-    filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.4)); 
+    filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.4)); /* More subtle */
 }
 
 .snowflake:nth-child(3n+1) {
-    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.4)); 
+    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.4)); /* More subtle */
 }
 
 .snowflake:nth-child(3n+2) {
-    filter: drop-shadow(0 0 4px rgba(255, 20, 147, 0.4)); 
+    filter: drop-shadow(0 0 4px rgba(255, 20, 147, 0.4)); /* More subtle */
 }
 
 @keyframes snowfall {
@@ -42,14 +42,14 @@
         opacity: 0;
     }
     10% {
-        opacity: 0.5; 
+        opacity: 0.5; /* Start with lower opacity */
     }
     50% {
         transform: translateY(50vh) translateX(25px) rotate(180deg);
-        opacity: 0.4; 
+        opacity: 0.4; /* Lower middle opacity */
     }
     90% {
-        opacity: 0.3; 
+        opacity: 0.3; /* Fade out gradually */
     }
     100% {
         transform: translateY(100vh) translateX(50px) rotate(360deg);
@@ -57,7 +57,7 @@
     }
 }
 
-
+/* Adding zigzag animation pattern */
 @keyframes zigzag {
     0% {
         transform: translateY(-100px) translateX(0) rotate(0deg);
@@ -84,7 +84,7 @@
     }
 }
 
-
+/* Adding swirl animation pattern */
 @keyframes swirl {
     0% {
         transform: translateY(-100px) translateX(0) rotate(0deg) scale(1);
@@ -109,7 +109,7 @@
     }
 }
 
-
+/* Wave Text Effect */
 .wave-text {
     position: relative;
     display: inline-block;
@@ -132,7 +132,7 @@
     }
 }
 
-
+/* Photo Frame Effect */
 .photo-frame {
     position: relative;
     padding: 20px;
@@ -155,7 +155,7 @@
         0 0 30px rgba(255,112,166,0.5);
 }
 
-
+/* 3D Text Effect */
 .text-3d {
     color: #fff;
     text-shadow: 
@@ -178,7 +178,7 @@
     transform: scale(1.05) rotate(1deg);
 }
 
-
+/* Magical Sparkle Cursor */
 .sparkle-cursor {
     position: fixed;
     width: 20px;
@@ -192,7 +192,7 @@
     opacity: 0;
 }
 
-
+/* Ripple Effect */
 .ripple {
     position: relative;
     overflow: hidden;
@@ -223,7 +223,7 @@
     }
 }
 
-
+/* Shimmering Border */
 .shimmer-border {
     position: relative;
     border: 2px solid transparent;
@@ -243,7 +243,7 @@
     }
 }
 
-
+/* Magnifying Glass Effect */
 .magnify {
     position: relative;
     overflow: hidden;
@@ -283,7 +283,7 @@
     transform: scale(1);
 }
 
-
+/* Dynamic Light Effect */
 .dynamic-light {
     position: relative;
     overflow: hidden;
@@ -314,7 +314,7 @@
     }
 }
 
-
+/* Reveal Effect */
 .reveal-effect {
     position: relative;
     overflow: hidden;

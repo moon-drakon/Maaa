@@ -63,7 +63,7 @@
     100% { background-color: #ff6b6b; }
 }
 
-
+/* Loading text */
 .loading-text {
     position: absolute;
     bottom: 20%;
@@ -80,7 +80,7 @@
     100% { opacity: 0.5; }
 }
 
-
+/* Loading dots animation */
 .loading-dots:after {
     content: '.';
     animation: dots 1.5s steps(5, end) infinite;
@@ -93,7 +93,7 @@
     80%, 100% { content: ''; }
 }
 
-
+/* Flower petals floating around the heart */
 .flower-petal {
     position: absolute;
     width: 15px;

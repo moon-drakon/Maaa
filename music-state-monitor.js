@@ -1,7 +1,5 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music state monitor initializing...');
-    
     
     setTimeout(setupMusicStateMonitor, 1000);
     
@@ -12,24 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        
         const bodyObserver = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'childList') {
-                    
                     const newAudioElements = Array.from(mutation.addedNodes)
                         .filter(node => node.nodeName === 'AUDIO');
                     
                     if (newAudioElements.length > 0) {
                         console.log('Music state monitor: New audio element detected');
                         
-                        
                         setTimeout(function() {
                             const updatedAudioElement = document.getElementById('background-music');
                             if (updatedAudioElement && updatedAudioElement !== audioElement) {
                                 console.log('Music state monitor: Updating audio element reference');
                                 audioElement = updatedAudioElement;
-                                
                                 
                                 document.dispatchEvent(new Event('musicPlayerCreated'));
                             }
@@ -39,14 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        
         bodyObserver.observe(document.body, { childList: true, subtree: true });
-        
         
         const playButton = document.getElementById('play-music-button');
         if (playButton) {
             playButton.addEventListener('click', function() {
-                
                 setTimeout(function() {
                     if (typeof saveMusicState === 'function') {
                         saveMusicState(

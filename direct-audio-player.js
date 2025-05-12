@@ -1,7 +1,5 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
-        
         enableDirectAudio();
     }, 1000);
 });
@@ -9,25 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
 function enableDirectAudio() {
     console.log('Direct Audio Player: Initializing');
     
-    
     const existingAudio = document.getElementById('background-music');
     if (!existingAudio) {
         console.log('Direct Audio Player: No audio element found');
         return;
     }
     
-    
     const setupAudio = function() {
         console.log('Direct Audio Player: Setup triggered');
-        
         
         try {
             if (existingAudio.paused) {
                 console.log('Direct Audio Player: Attempting to play audio');
                 
-                
                 existingAudio.load();
-                
                 
                 const playPromise = existingAudio.play();
                 
@@ -35,7 +28,6 @@ function enableDirectAudio() {
                     playPromise
                         .then(() => {
                             console.log('Direct Audio Player: Audio playback started successfully');
-                            
                             
                             const playPauseBtn = document.querySelector('#play-pause-button');
                             if (playPauseBtn) {
@@ -50,7 +42,6 @@ function enableDirectAudio() {
                         .catch(error => {
                             console.error('Direct Audio Player: Playback failed:', error);
                             
-                            
                             fallbackAudioPlay();
                         });
                 } else {
@@ -63,30 +54,25 @@ function enableDirectAudio() {
             fallbackAudioPlay();
         }
         
-        
         document.removeEventListener('click', setupAudio);
         document.removeEventListener('touchstart', setupAudio);
     };
     
-    
     document.addEventListener('click', setupAudio);
     document.addEventListener('touchstart', setupAudio);
-    
     
     function fallbackAudioPlay() {
         console.log('Direct Audio Player: Using fallback approach');
         
-        try {            
+        try {
             const newAudio = new Audio();
             newAudio.src = 'audio/moms-song.mp3';
             newAudio.volume = 0.7;
             newAudio.loop = true;
             newAudio.preload = 'auto';
             
-            
             newAudio.style.display = 'none';
             document.body.appendChild(newAudio);
-            
             
             newAudio.play()
                 .then(() => {

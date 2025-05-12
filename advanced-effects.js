@@ -1,37 +1,21 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    
     initAdvancedEffects();
 });
 
 function initAdvancedEffects() {
-    
     createAnimatedBackground();
-    
-    
     initSpotlightEffect();
-    
-    
     createRandomHearts();
-    
-    
     setupPageTransitions();
-    
-    
     setupParallaxEffect();
-    
-    
     init3DTiltEffect();
 }
-
 
 function createAnimatedBackground() {
     const bg = document.createElement('div');
     bg.className = 'animated-bg';
     document.body.prepend(bg);
 }
-
 
 function initSpotlightEffect() {
     const containers = document.querySelectorAll('.spotlight-container');
@@ -59,15 +43,12 @@ function initSpotlightEffect() {
     });
 }
 
-
 function createRandomHearts() {
     const container = document.body;
-    
     
     for (let i = 0; i < 15; i++) {
         createPulsingHeart(container);
     }
-    
     
     setInterval(() => {
         createPulsingHeart(container);
@@ -78,26 +59,20 @@ function createPulsingHeart(container) {
     const heart = document.createElement('div');
     heart.className = 'pulsing-heart';
     
-    
     const x = Math.random() * 100;
     const y = Math.random() * 100;
     
-    
     const size = Math.random() * 20 + 15;
-    
     
     const colors = ['#ff70a6', '#ff9ebc', '#b19cd9', '#9370db'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     
-    
     heart.innerHTML = '<svg viewBox="0 0 512 512" width="100%" height="100%"><path fill="' + color + '" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>';
-    
     
     heart.style.left = `${x}%`;
     heart.style.top = `${y}%`;
     heart.style.width = `${size}px`;
     heart.style.height = `${size}px`;
-    
     
     heart.addEventListener('animationend', () => {
         if (container.contains(heart)) {
@@ -105,17 +80,13 @@ function createPulsingHeart(container) {
         }
     });
     
-    
     container.appendChild(heart);
 }
 
-
 function setupPageTransitions() {
-    
     const transition = document.createElement('div');
     transition.className = 'page-transition';
     document.body.appendChild(transition);
-    
     
     const internalLinks = document.querySelectorAll('a[href^="index"], a[href^="gallery"], a[href^="dedication"]');
     
@@ -124,9 +95,7 @@ function setupPageTransitions() {
             e.preventDefault();
             const target = this.getAttribute('href');
             
-            
             transition.classList.add('active');
-            
             
             setTimeout(() => {
                 window.location.href = target;
@@ -134,7 +103,6 @@ function setupPageTransitions() {
         });
     });
 }
-
 
 function setupParallaxEffect() {
     if (document.querySelector('.parallax-container')) {
@@ -148,7 +116,6 @@ function setupParallaxEffect() {
         });
     }
 }
-
 
 function init3DTiltEffect() {
     const elements = document.querySelectorAll('.tilt-effect');
@@ -176,14 +143,11 @@ function init3DTiltEffect() {
     });
 }
 
-
 function createFloatingGallery(container, images) {
     if (!container) return;
     
-    
     const gallery = document.createElement('div');
     gallery.className = 'floating-gallery';
-    
     
     images.forEach(img => {
         const photoDiv = document.createElement('div');
@@ -196,7 +160,6 @@ function createFloatingGallery(container, images) {
         photoDiv.appendChild(imgElement);
         gallery.appendChild(photoDiv);
         
-        
         photoDiv.addEventListener('click', () => {
             createFullscreenView(img.src);
         });
@@ -204,7 +167,6 @@ function createFloatingGallery(container, images) {
     
     container.appendChild(gallery);
 }
-
 
 function createFullscreenView(imgSrc) {
     const fullscreen = document.createElement('div');
@@ -235,12 +197,10 @@ function createFullscreenView(imgSrc) {
     fullscreen.appendChild(img);
     document.body.appendChild(fullscreen);
     
-    
     setTimeout(() => {
         fullscreen.style.opacity = '1';
         img.style.transform = 'scale(1)';
     }, 10);
-    
     
     fullscreen.addEventListener('click', () => {
         fullscreen.style.opacity = '0';

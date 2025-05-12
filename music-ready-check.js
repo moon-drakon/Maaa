@@ -1,7 +1,5 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music ready check initializing...');
-    
     
     setTimeout(checkMusicSystem, 2000);
     
@@ -15,9 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        
         let hasValidSource = false;
-        
         
         if (audioElement.querySelector('source')) {
             hasValidSource = true;
@@ -31,12 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        
         if (typeof playButton.onclick !== 'function' && 
             playButton._events === undefined && 
             playButton.eventListenerList === undefined) {
             console.warn('Play button may not have event handlers');
-            
             
             playButton.addEventListener('click', function() {
                 console.log('Backup click handler triggered');
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function repairMusicSystem() {
         console.log('Attempting to repair music system...');
         
-        
         let audioElement = document.getElementById('background-music');
         if (!audioElement) {
             audioElement = document.createElement('audio');
@@ -72,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(audioElement);
             console.log('Recreated audio element');
         }
-        
         
         let controls = document.getElementById('music-controls');
         if (!controls) {
@@ -95,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             controls.appendChild(volumeSlider);
             document.body.appendChild(controls);
             console.log('Recreated music controls');
-            
             
             if (typeof enableDirectAudio === 'function') {
                 enableDirectAudio();

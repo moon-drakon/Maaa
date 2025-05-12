@@ -9,22 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-    
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `music-notification ${type}`;
         notification.textContent = message;
         document.body.appendChild(notification);
         
-        
         const controlsRect = musicControls.getBoundingClientRect();
         notification.style.bottom = (controlsRect.height + 20) + 'px';
         notification.style.left = '10px';
         
-        
         setTimeout(() => {
             notification.classList.add('visible');
-            
             
             setTimeout(() => {
                 notification.classList.remove('visible');
@@ -33,14 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     }
     
-    
     if (!audioPlayer.src || !audioPlayer.src.includes('/audio/')) {
         const defaultSong = 'audio/moms-song.mp3';
         audioPlayer.src = defaultSong;
         console.info('Set default audio source:', defaultSong);
     }
 
-    
     const savedVolume = localStorage.getItem('musicVolume');
     const savedTime = localStorage.getItem('musicTime');
     const isPlaying = localStorage.getItem('musicPlaying') === 'true';
@@ -73,11 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         musicControls.style.opacity = '0';
         musicControls.style.visibility = 'hidden';
     }
-      
+    
     musicControls.addEventListener('mouseenter', () => {
         showControls();
     });
-    
     
     const createHoverDetection = () => {
         const hoverDetect = document.createElement('div');
@@ -92,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
             pointer-events: none;
         `;
         document.body.appendChild(hoverDetect);
-        
         
         document.addEventListener('mousemove', (e) => {
             const cornerThreshold = 80;
@@ -109,22 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     createHoverDetection();
     
-    
     musicControls.addEventListener('mouseleave', () => {
         if (!audioPlayer.paused) {
             setTimeout(() => {
                 hideControls();
-            }, 1500); 
+            }, 1500);
         }
     });
-    
     
     playButton.addEventListener('click', () => {
         if (audioPlayer.paused) {
             audioPlayer.play().then(() => {
                 localStorage.setItem('musicPlaying', 'true');
                 updatePlayButton();
-                hideControls(); 
+                hideControls();
                 showNotification('Music started ♫', 'success');
             }).catch(error => {
                 console.error("Error playing audio:", error);
@@ -134,11 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
             audioPlayer.pause();
             localStorage.setItem('musicPlaying', 'false');
             updatePlayButton();
-            showControls(); 
+            showControls();
             showNotification('Music paused', 'info');
         }
     });
-    
     
     let volumeNotificationTimeout;
     
@@ -147,45 +136,37 @@ document.addEventListener('DOMContentLoaded', () => {
         audioPlayer.volume = newVolume;
         localStorage.setItem('musicVolume', newVolume.toString());
         
-        
         clearTimeout(volumeNotificationTimeout);
-        
         
         volumeNotificationTimeout = setTimeout(() => {
             const volumePercent = Math.round(newVolume * 100);
             const volumeEmoji = volumePercent > 70 ? '🔊' : volumePercent > 30 ? '🔉' : volumePercent > 0 ? '🔈' : '🔇';
             showNotification(`Volume: ${volumePercent}% ${volumeEmoji}`, 'info');
-        }, 500); 
+        }, 500);
     });
 
     audioPlayer.addEventListener('timeupdate', () => {
         localStorage.setItem('musicTime', audioPlayer.currentTime.toString());
     });
     audioPlayer.addEventListener('ended', () => {
-        
         localStorage.setItem('musicPlaying', 'false');
         updatePlayButton();
-        showControls(); 
+        showControls();
     });
 
-    
     updatePlayButton();
-    showControls(); 
+    showControls();
     
     if (isPlaying) {
-    showControls(); 
-        
+        showControls();
         audioPlayer.play().then(() => {
             updatePlayButton();
             hideControls();
-            
         }).catch(error => {
-            
             console.warn("Autoplay prevented:", error);
             localStorage.setItem('musicPlaying', 'false');
             updatePlayButton();
             showControls();
-            
             
             setTimeout(() => {
                 showNotification('Click the Play button to continue music ♫', 'info');
@@ -193,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-        
     window.addEventListener('beforeunload', () => {
         localStorage.setItem('musicTime', audioPlayer.currentTime.toString());
         localStorage.setItem('musicVolume', audioPlayer.volume.toString());

@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function preloadAudio() {
     const audioSources = [
         { src: 'audio/moms-song.mp3', type: 'audio/mp3' },
-        { src: 'https:
-        { src: 'https:
-        { src: 'https:
+        { src: 'https://www.chosic.com/wp-content/uploads/2021/04/Beautiful-Piano-Meditation.mp3', type: 'audio/mp3' },
+        { src: 'https://www.bensound.com/bensound-music/bensound-memories.mp3', type: 'audio/mp3' },
+        { src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', type: 'audio/mp3' }
     ];
     
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -18,12 +18,11 @@ function preloadAudio() {
     
     const audioContext = new AudioContext();
     
-    
+
     if (audioContext.state === 'suspended') {
         const resumeAudioContext = function() {
             audioContext.resume();
-            
-            
+     
             document.removeEventListener('click', resumeAudioContext);
             document.removeEventListener('touchstart', resumeAudioContext);
             document.removeEventListener('keydown', resumeAudioContext);
@@ -36,7 +35,7 @@ function preloadAudio() {
         document.addEventListener('keydown', resumeAudioContext);
     }
     
-    
+  
     let loadedAudio = false;
     let currentSourceIndex = 0;
     
@@ -57,19 +56,17 @@ function preloadAudio() {
                 return response.arrayBuffer();
             })
             .then(buffer => {
-                
                 return audioContext.decodeAudioData(buffer);
             })
             .then(decodedData => {
                 console.log('Audio loaded successfully:', source.src);
                 loadedAudio = true;
                 
-                
+
                 window.preloadedAudioData = {
                     source: source.src,
                     decoded: decodedData
                 };
-                
                 
                 const event = new CustomEvent('audioPreloaded', { 
                     detail: { source: source.src } 
@@ -78,12 +75,11 @@ function preloadAudio() {
             })
             .catch(error => {
                 console.warn(`Failed to load audio source (${source.src}):`, error);
-                
+        
                 currentSourceIndex++;
                 tryNextSource();
             });
     }
-    
     
     tryNextSource();
 }

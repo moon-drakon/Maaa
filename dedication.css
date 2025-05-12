@@ -1,4 +1,4 @@
-
+/* Dedication Page Styles */
 .dedication-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #5e2ca5 0%, #ff70a6 100%);
@@ -214,7 +214,7 @@
     font-size: 1.2rem;
 }
 
-
+/* Floating Elements */
 .floating-elements {
     position: absolute;
     top: 0;
@@ -308,7 +308,7 @@
     }
 }
 
-
+/* Media Queries */
 @media (max-width: 768px) {
     .animated-text {
         font-size: 1.2rem;

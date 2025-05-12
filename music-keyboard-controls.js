@@ -1,52 +1,39 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music keyboard controls initializing...');
     
-    
     document.addEventListener('keydown', function(event) {
-        
         if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
             return;
-        }        
+        }
         if (event.code === 'Space' && !event.ctrlKey && !event.altKey && !event.shiftKey) {
             const playButton = document.getElementById('play-music-button');
             const audioElement = document.getElementById('background-music');
             
             if (playButton && audioElement) {
-                
                 event.preventDefault();
                 event.stopPropagation();
                 
                 console.log('Spacebar pressed - toggling music playback');
 
-                
                 if (audioElement.paused) {
-                    
                     const playPromise = audioElement.play();
                     if (playPromise !== undefined) {
                         playPromise.then(() => {
                             console.log('Spacebar - Audio played successfully');
-                            
                             playButton.textContent = 'Pause Music';
                             playButton.classList.add('active');
-                            
                             localStorage.setItem('musicIsPlaying', 'true');
                         }).catch(err => {
                             console.error('Spacebar play error:', err);
-                            
                             playButton.click();
                         });
                     }
                 } else {
-                    
                     audioElement.pause();
                     console.log('Spacebar - Audio paused successfully');
-                    
                     playButton.textContent = 'Play Music';
                     playButton.classList.remove('active');
-                    
                     localStorage.setItem('musicIsPlaying', 'false');
-                    
                     
                     if (!audioElement.paused && window.robustAudioPause) {
                         window.robustAudioPause();
@@ -55,32 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        
         if (event.code === 'KeyM' && !event.ctrlKey && !event.altKey && !event.shiftKey) {
             const audioElement = document.getElementById('background-music');
             const volumeSlider = document.getElementById('volume-slider');
             
             if (audioElement && volumeSlider) {
                 if (audioElement.volume > 0) {
-                    
                     audioElement.dataset.previousVolume = audioElement.volume;
                     audioElement.volume = 0;
                     volumeSlider.value = 0;
                     
-                    
                     showVolumeNotification('Muted');
                 } else {
-                    
                     const prevVolume = parseFloat(audioElement.dataset.previousVolume || 0.7);
                     audioElement.volume = prevVolume;
                     volumeSlider.value = prevVolume;
-                    
                     
                     showVolumeNotification(`Volume: ${Math.round(prevVolume * 100)}%`);
                 }
             }
         }
-        
         
         if ((event.code === 'ArrowUp' || event.code === 'ArrowDown') && 
             event.ctrlKey && !event.altKey && !event.shiftKey) {
@@ -97,28 +78,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     newVolume = Math.max(0, newVolume - 0.1);
                 }
                 
-                
                 newVolume = Math.round(newVolume * 10) / 10;
                 
                 audioElement.volume = newVolume;
                 volumeSlider.value = newVolume;
                 
-                
                 showVolumeNotification(`Volume: ${Math.round(newVolume * 100)}%`);
                 
-                event.preventDefault(); 
+                event.preventDefault();
             }
         }
     });
     
-    
     function showVolumeNotification(message) {
-        
         if (typeof showNotification === 'function') {
             showNotification(message);
             return;
         }
-        
         
         const notification = document.createElement('div');
         notification.textContent = message;

@@ -1,4 +1,4 @@
-
+/* simple-music-controls.css - Clean styling for music controls */
 
 #music-controls {
     position: fixed;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    
+    /* Ensure visibility */
     opacity: 1 !important;
     visibility: visible !important;
 }
@@ -61,13 +61,13 @@
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
-
+/* Enhanced hover state for pause button to make it more obvious */
 #play-music-button.active:hover {
     background: linear-gradient(135deg, #e03065, #ff5b8a);
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
 }
 
-
+/* Add pause icon on hover for better affordance */
 #play-music-button.active:hover:after {
     content: '⏸';
     position: absolute;
@@ -131,7 +131,7 @@
     transform: scale(1.2);
 }
 
-
+/* Pulsing animation for active play button */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);

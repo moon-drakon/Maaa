@@ -1,15 +1,14 @@
-
 .message-container {
     position: relative;
     padding: 2rem;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.95); 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), 0 0 50px rgba(255, 112, 166, 0.2); 
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), 0 0 50px rgba(255, 112, 166, 0.2);
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
-    z-index: 10; 
-    backdrop-filter: blur(5px); 
+    z-index: 10;
+    backdrop-filter: blur(5px);
 }
 
 .promise-message {
@@ -36,18 +35,16 @@
     text-align: center;
 }
 
-
 .typewriter {
     display: inline-block;
     overflow: visible;
     white-space: normal;
     width: 100%;
     word-wrap: break-word;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); 
-    font-weight: 500; 
-    letter-spacing: 0.3px; 
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
-
 
 .signature {
     margin-top: 2rem;
@@ -56,10 +53,9 @@
     font-size: 1.2rem;
     position: relative;
     padding-top: 15px;
-    text-align: right; 
-    border-top: 1px dashed rgba(142, 68, 173, 0.3); 
+    text-align: right;
+    border-top: 1px dashed rgba(142, 68, 173, 0.3);
 }
-
 
 @media (max-width: 768px) {
     .animated-text {

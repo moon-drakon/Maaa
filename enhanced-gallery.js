@@ -1,61 +1,40 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    
     if (document.querySelector('.gallery-page')) {
         initEnhancedGallery();
     }
 });
 
 function initEnhancedGallery() {
-    
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
     const totalItems = items.length;
     
-    
     if (carouselContainer && carousel && items.length > 0) {
-        
         createFullscreenButton(carouselContainer);
-        
-        
         enhanceCarouselItems(items);
-        
-        
         initializeEnhancedCarousel(carousel, items);
-        
-        
         createThumbnailNav(carouselContainer, items);
-        
-        
         createModalViewer();
     }
 }
 
-
 function enhanceCarouselItems(items) {
     items.forEach(item => {
-        
         item.classList.add('enhanced-3d-item');
-        
         
         const reflection = document.createElement('div');
         reflection.className = 'item-reflection';
         item.appendChild(reflection);
         
-        
         item.addEventListener('click', function() {
-            
             const imgSrc = this.querySelector('img').src;
             const caption = this.querySelector('.caption').innerText;
-            
             
             showImageInModal(imgSrc, caption);
         });
     });
 }
-
 
 function initializeEnhancedCarousel(carousel, items) {
     const totalItems = items.length;
@@ -63,9 +42,7 @@ function initializeEnhancedCarousel(carousel, items) {
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
     
-    
     updateCarouselPositions();
-    
     
     let isDragging = false;
     let startPosition = 0;
@@ -79,7 +56,6 @@ function initializeEnhancedCarousel(carousel, items) {
     carousel.addEventListener('touchmove', drag);
     carousel.addEventListener('mouseleave', dragEnd);
     
-    
     function dragStart(e) {
         e.preventDefault();
         startPosition = getPositionX(e);
@@ -91,7 +67,6 @@ function initializeEnhancedCarousel(carousel, items) {
         if (isDragging) {
             const currentPosition = getPositionX(e);
             const diff = currentPosition - startPosition;
-            
             
             if (Math.abs(diff) > 50) {
                 if (diff > 0) {
@@ -113,7 +88,6 @@ function initializeEnhancedCarousel(carousel, items) {
         return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
     }
     
-    
     if (prevButton) {
         prevButton.addEventListener('click', goToPrev);
     }
@@ -134,15 +108,11 @@ function initializeEnhancedCarousel(carousel, items) {
         updateThumbnailSelection();
     }
     
-    
     function updateCarouselPositions() {
         items.forEach((item, index) => {
-            
             item.classList.remove('active', 'prev', 'next', 'farPrev', 'farNext', 'extraFarPrev', 'extraFarNext');
             
-            
             let position = (index - currentIndex + totalItems) % totalItems;
-            
             
             if (position === 0) {
                 item.classList.add('active');
@@ -169,14 +139,12 @@ function initializeEnhancedCarousel(carousel, items) {
         });
     }
     
-    
     function updateThumbnailSelection() {
         const thumbnails = document.querySelectorAll('.gallery-thumbnail');
         thumbnails.forEach((thumb, index) => {
             thumb.classList.toggle('active', index === currentIndex);
         });
     }
-    
     
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') {
@@ -186,9 +154,7 @@ function initializeEnhancedCarousel(carousel, items) {
         }
     });
     
-    
     let autoRotate = setInterval(goToNext, 5000);
-    
     
     carousel.addEventListener('mouseenter', () => {
         clearInterval(autoRotate);
@@ -199,12 +165,9 @@ function initializeEnhancedCarousel(carousel, items) {
     });
 }
 
-
 function createThumbnailNav(container, items) {
-    
     const thumbnailNav = document.createElement('div');
     thumbnailNav.className = 'thumbnail-navigation';
-    
     
     items.forEach((item, index) => {
         const thumbnail = document.createElement('div');
@@ -214,20 +177,15 @@ function createThumbnailNav(container, items) {
         const imgSrc = item.querySelector('img').src;
         thumbnail.style.backgroundImage = `url(${imgSrc})`;
         
-        
         thumbnail.addEventListener('click', () => {
-            
             const carousel = document.querySelector('.carousel');
             const items = document.querySelectorAll('.carousel-item');
-            
             
             items.forEach((item, i) => {
                 item.classList.remove('active', 'prev', 'next', 'farPrev', 'farNext', 'extraFarPrev', 'extraFarNext');
                 
-                
                 const totalItems = items.length;
                 let position = (i - index + totalItems) % totalItems;
-                
                 
                 if (position === 0) {
                     item.classList.add('active');
@@ -253,7 +211,6 @@ function createThumbnailNav(container, items) {
                 }
             });
             
-            
             const thumbnails = document.querySelectorAll('.gallery-thumbnail');
             thumbnails.forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);
@@ -263,10 +220,8 @@ function createThumbnailNav(container, items) {
         thumbnailNav.appendChild(thumbnail);
     });
     
-    
     container.parentNode.insertBefore(thumbnailNav, container.nextSibling);
 }
-
 
 function createFullscreenButton(container) {
     const fullscreenButton = document.createElement('button');
@@ -274,18 +229,14 @@ function createFullscreenButton(container) {
     fullscreenButton.innerHTML = '<i class="fas fa-expand"></i>';
     
     fullscreenButton.addEventListener('click', () => {
-        
         toggleGridView();
     });
     
     container.appendChild(fullscreenButton);
 }
 
-
 function createModalViewer() {
-    
     if (document.querySelector('.gallery-modal')) return;
-    
     
     const modal = document.createElement('div');
     modal.className = 'gallery-modal';
@@ -299,17 +250,13 @@ function createModalViewer() {
         </div>
     `;
     
-    
     modal.style.display = 'none';
     
-    
     document.body.appendChild(modal);
-    
     
     modal.querySelector('.close-modal').addEventListener('click', () => {
         modal.style.display = 'none';
     });
-    
     
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -317,7 +264,6 @@ function createModalViewer() {
         }
     });
 }
-
 
 function showImageInModal(imgSrc, caption) {
     const modal = document.querySelector('.gallery-modal');
@@ -328,16 +274,13 @@ function showImageInModal(imgSrc, caption) {
     const prevButton = modal.querySelector('.modal-prev');
     const nextButton = modal.querySelector('.modal-next');
     
-    
     modalImg.src = imgSrc;
     modalCaption.textContent = caption;
-    
     
     modal.style.display = 'flex';
     setTimeout(() => {
         modal.style.opacity = '1';
     }, 10);
-    
     
     const carouselItems = document.querySelectorAll('.carousel-item');
     const images = Array.from(carouselItems).map(item => {
@@ -347,9 +290,7 @@ function showImageInModal(imgSrc, caption) {
         };
     });
     
-    
     let currentIndex = images.findIndex(img => img.src === imgSrc);
-    
     
     prevButton.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
@@ -357,13 +298,11 @@ function showImageInModal(imgSrc, caption) {
         modalCaption.textContent = images[currentIndex].caption;
     });
     
-    
     nextButton.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % images.length;
         modalImg.src = images[currentIndex].src;
         modalCaption.textContent = images[currentIndex].caption;
     });
-    
     
     function handleKeyDown(e) {
         if (e.key === 'Escape') {
@@ -383,26 +322,20 @@ function showImageInModal(imgSrc, caption) {
     document.addEventListener('keydown', handleKeyDown);
 }
 
-
 function toggleGridView() {
     const carousel = document.querySelector('.carousel-container');
     const gallerySection = document.querySelector('.gallery-section');
     
-    
     let gridView = document.querySelector('.gallery-grid-view');
     
     if (gridView) {
-        
         gridView.style.display = 'none';
         carousel.style.display = '';
     } else {
-        
         gridView = document.createElement('div');
         gridView.className = 'gallery-grid-view';
         
-        
         const carouselItems = document.querySelectorAll('.carousel-item');
-        
         
         carouselItems.forEach(item => {
             const gridItem = document.createElement('div');
@@ -418,14 +351,12 @@ function toggleGridView() {
             gridItem.appendChild(img);
             gridItem.appendChild(caption);
             
-            
             gridItem.addEventListener('click', () => {
                 showImageInModal(img.src, caption.textContent);
             });
             
             gridView.appendChild(gridItem);
         });
-        
         
         carousel.style.display = 'none';
         gallerySection.appendChild(gridView);

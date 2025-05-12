@@ -1,13 +1,10 @@
-
 document.addEventListener('DOMContentLoaded', function() {
-    
     if (document.querySelector('.gallery-page')) {
         improveGallery();
     }
 });
 
 function improveGallery() {
-    
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
@@ -16,25 +13,18 @@ function improveGallery() {
         return;
     }
     
-    
     addStylesheet('improved-gallery.css');
-    
     
     createViewToggles(carouselContainer, carousel, items);
     
-    
     createGridView(carouselContainer, items);
-    
     
     createModalViewer(items);
     
-    
     improveCarouselNavigation(carousel, items);
-    
     
     toggleView('grid');
 }
-
 
 function addStylesheet(href) {
     const link = document.createElement('link');
@@ -42,7 +32,6 @@ function addStylesheet(href) {
     link.href = href;
     document.head.appendChild(link);
 }
-
 
 function createViewToggles(container, carousel, items) {
     const controls = document.createElement('div');
@@ -61,10 +50,8 @@ function createViewToggles(container, carousel, items) {
     controls.appendChild(carouselBtn);
     controls.appendChild(gridBtn);
     
-    
     container.parentNode.insertBefore(controls, container);
 }
-
 
 function createGridView(container, items) {
     const gridView = document.createElement('div');
@@ -89,7 +76,6 @@ function createGridView(container, items) {
         gridItem.appendChild(gridImg);
         gridItem.appendChild(gridCaption);
         
-        
         gridItem.addEventListener('click', function() {
             openModal(parseInt(this.getAttribute('data-index')));
         });
@@ -97,10 +83,8 @@ function createGridView(container, items) {
         gridView.appendChild(gridItem);
     });
     
-    
     container.parentNode.insertBefore(gridView, container.nextSibling);
 }
-
 
 function toggleView(view) {
     const carouselContainer = document.querySelector('.carousel-container');
@@ -120,7 +104,6 @@ function toggleView(view) {
         gridBtn.classList.add('active');
     }
 }
-
 
 function createModalViewer(items) {
     const modal = document.createElement('div');
@@ -163,7 +146,6 @@ function createModalViewer(items) {
     
     document.body.appendChild(modal);
     
-    
     modal.setAttribute('data-current-index', '0');
     
     prevBtn.addEventListener('click', function() {
@@ -173,7 +155,6 @@ function createModalViewer(items) {
     nextBtn.addEventListener('click', function() {
         navigateModal('next');
     });
-    
     
     document.addEventListener('keydown', function(e) {
         if (!modal.classList.contains('show')) return;
@@ -187,7 +168,6 @@ function createModalViewer(items) {
         }
     });
 }
-
 
 function openModal(index) {
     const items = document.querySelectorAll('.carousel-item');
@@ -204,16 +184,14 @@ function openModal(index) {
     modalCaption.textContent = caption.textContent;
     
     modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
-
 
 function closeModal() {
     const modal = document.querySelector('.gallery-modal');
     modal.classList.remove('show');
-    document.body.style.overflow = ''; 
+    document.body.style.overflow = '';
 }
-
 
 function navigateModal(direction) {
     const modal = document.querySelector('.gallery-modal');
@@ -229,9 +207,7 @@ function navigateModal(direction) {
     openModal(currentIndex);
 }
 
-
 function improveCarouselNavigation(carousel, items) {
-    
     items.forEach((item, index) => {
         if (index === 0) {
             item.classList.add('active');
@@ -242,7 +218,6 @@ function improveCarouselNavigation(carousel, items) {
         } else {
             item.style.opacity = '0';
         }
-        
         
         item.addEventListener('click', function() {
             const currentActive = carousel.querySelector('.active');
@@ -256,12 +231,10 @@ function improveCarouselNavigation(carousel, items) {
                     moveCarousel('prev');
                 }
             } else {
-                
                 openModal(clickedIndex);
             }
         });
     });
-    
     
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
@@ -274,7 +247,6 @@ function improveCarouselNavigation(carousel, items) {
         moveCarousel('next');
     });
 }
-
 
 function moveCarousel(direction) {
     const items = document.querySelectorAll('.carousel-item');
@@ -289,20 +261,16 @@ function moveCarousel(direction) {
         newIndex = (currentIndex - 1 + items.length) % items.length;
     }
     
-    
     items.forEach(item => {
         item.classList.remove('active', 'prev', 'next');
         item.style.opacity = '0';
     });
     
-    
     items[newIndex].classList.add('active');
-    
     
     const prevIndex = (newIndex - 1 + items.length) % items.length;
     items[prevIndex].classList.add('prev');
     items[prevIndex].style.opacity = '1';
-    
     
     const nextIndex = (newIndex + 1) % items.length;
     items[nextIndex].classList.add('next');
