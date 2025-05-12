@@ -1,6 +1,4 @@
 
-
-
 .animated-bg {
     background: linear-gradient(-45deg, #ff70a6, #ff9ebc, #b19cd9, #9370db, #5e2ca5);
     background-size: 400% 400%;
@@ -18,7 +16,6 @@
     50% { background-position: 100% 50% }
     100% { background-position: 0% 50% }
 }
-
 
 .parallax-container {
     perspective: 1px;
@@ -45,7 +42,6 @@
     transform: translateZ(0);
 }
 
-
 .fancy-text {
     background: linear-gradient(to right, #ff70a6, #9370db);
     -webkit-background-clip: text;
@@ -60,7 +56,6 @@
         background-position: 200% center;
     }
 }
-
 
 .glitter {
     position: relative;
@@ -105,7 +100,6 @@
     z-index: 10;
 }
 
-
 .liquid-btn {
     position: relative;
     padding: 15px 30px;
@@ -145,7 +139,6 @@
     }
 }
 
-
 .pulsing-heart {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -184,7 +177,6 @@
     pointer-events: none;
 }
 
-
 .typewriter {
     overflow: hidden;
     border-right: 0.15em solid #ff70a6;
@@ -202,7 +194,6 @@
     from, to { border-color: transparent }
     50% { border-color: #ff70a6 }
 }
-
 
 .flip-card {
     perspective: 1000px;
