@@ -1,21 +1,21 @@
-// music-autoplay-notice.js - DISABLED popup notices per user request
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music autoplay notice disabled by user request');
     
-    // All popup functionality disabled
+    
     function checkIfMusicStarted() {
-        // Do nothing - popups disabled
+        
     }
     
     function showPlayMusicNotice() {
-        // Do nothing - popups disabled
+        
         let notice = document.getElementById('music-notice');
         if (!notice) {
             notice = document.createElement('div');
             notice.id = 'music-notice';
             notice.className = 'music-notice';
             
-            // Style the notice
+            
             Object.assign(notice.style, {
                 position: 'fixed',
                 bottom: '70px',
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 animation: 'fadeIn 0.5s ease'
             });
             
-            // Add close button
+            
             const closeBtn = document.createElement('span');
             closeBtn.innerHTML = '&times;';
             closeBtn.style.position = 'absolute';
@@ -44,12 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(notice);
             };
             
-            // Add content
+            
             const content = document.createElement('p');
             content.innerHTML = '💕 Click the <strong>Play Music</strong> button in the bottom left corner for the full emotional experience! 🎵';
             content.style.margin = '0';
             
-            // Add an arrow pointing to the music button
+            
             const arrow = document.createElement('div');
             arrow.innerHTML = '👈';
             arrow.style.position = 'absolute';
@@ -58,15 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
             arrow.style.fontSize = '24px';
             arrow.style.transform = 'rotate(30deg)';
             
-            // Add all elements to the notice
+            
             notice.appendChild(closeBtn);
             notice.appendChild(content);
             notice.appendChild(arrow);
             
-            // Add to the body
+            
             document.body.appendChild(notice);
             
-            // Auto hide after some time
+            
             setTimeout(function() {
                 if (notice.parentNode) {
                     notice.style.opacity = '0';
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Create keyframes for fadeIn animation if they don't exist
+    
     if (!document.getElementById('music-notice-keyframes')) {
         const style = document.createElement('style');
         style.id = 'music-notice-keyframes';

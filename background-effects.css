@@ -1,4 +1,4 @@
-/* Subtle background effects that don't interfere with content */
+
 
 .subtle-background {
     position: fixed;
@@ -16,10 +16,10 @@
     border-radius: 50%;
     opacity: 0.3;
     pointer-events: none;
-    mix-blend-mode: screen; /* Ensures it blends nicely with background */
+    mix-blend-mode: screen; 
 }
 
-/* Gentle floating animation for background elements */
+
 @keyframes float-bg {
     0% {
         transform-origin: center center;
@@ -39,19 +39,19 @@
     }
 }
 
-/* Adjustment to ensure text is always readable */
+
 .message-container, .letter-container, .hero-content, .section-title {
     position: relative;
-    z-index: 5; /* Ensure content is above background effects */
+    z-index: 5; 
 }
 
-/* Ensure images and photos are visible */
+
 .dedication-photo, .hero-image, .mother-child-photo {
     position: relative;
     z-index: 4;
 }
 
-/* Ensure buttons and interactive elements are accessible */
+
 button, .cta-button, .nav-button, .back-button {
     position: relative;
     z-index: 10;

@@ -1,9 +1,9 @@
-// Music player functionality
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Create music player elements
+    
     createMusicPlayer();
     
-    // Initialize music player functionality
+    
     initMusicPlayer();
 });
 
@@ -42,12 +42,12 @@ function createMusicPlayer() {
     audioElement.id = 'background-music';
     audioElement.loop = true;
     
-    // Example music tracks - replace with your own music file
+    
     const musicSources = [
-        { src: 'https://www.chosic.com/wp-content/uploads/2021/04/Beautiful-Piano-Meditation.mp3', type: 'audio/mp3' }
+        { src: 'https:
     ];
     
-    // Add music sources to the audio element
+    
     musicSources.forEach(source => {
         const sourceElement = document.createElement('source');
         sourceElement.src = source.src;
@@ -55,7 +55,7 @@ function createMusicPlayer() {
         audioElement.appendChild(sourceElement);
     });
     
-    // Assemble the player
+    
     volumeControl.appendChild(volumeSlider);
     playerControls.appendChild(playButton);
     playerControls.appendChild(pauseButton);
@@ -74,24 +74,24 @@ function initMusicPlayer() {
     const pauseButton = document.getElementById('pause-button');
     const volumeSlider = document.getElementById('volume-slider');
     
-    // Initialize volume
+    
     music.volume = volumeSlider.value / 100;
     
-    // Play button functionality
+    
     playButton.addEventListener('click', function() {
         music.play();
         playButton.style.display = 'none';
         pauseButton.style.display = 'inline-block';
     });
     
-    // Pause button functionality
+    
     pauseButton.addEventListener('click', function() {
         music.pause();
         pauseButton.style.display = 'none';
         playButton.style.display = 'inline-block';
     });
     
-    // Volume slider functionality
+    
     volumeSlider.addEventListener('input', function() {
         music.volume = volumeSlider.value / 100;
     });

@@ -33,9 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log('Spacebar handler - toggling music playback');
             
-            // Direct control of audio element
             if (audioElement.paused) {
-                // Play the audio
+            
                 const playPromise = audioElement.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {

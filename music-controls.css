@@ -1,4 +1,4 @@
-/* music-controls.css - Enhanced styling for music controls */
+
 
 #music-controls {
     position: fixed;
@@ -40,7 +40,7 @@
     transform: scale(0.97);
 }
 
-/* Pulsing animation for when music is playing */
+
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
@@ -67,7 +67,7 @@
     background: linear-gradient(to right, #ff5e87, #ff8e8e);
 }
 
-/* Volume slider styling */
+
 #volume-slider {
     -webkit-appearance: none;
     appearance: none;
@@ -107,12 +107,12 @@
     transform: scale(1.2);
 }
 
-/* Music hover detection area for responsive controls */
+
 #music-hover-detect {
-    display: none; /* Hidden visually but still functional */
+    display: none; 
 }
 
-/* Music notifications */
+
 .music-notification {
     position: fixed;
     padding: 8px 15px;

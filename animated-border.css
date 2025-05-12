@@ -1,12 +1,12 @@
-/* Adds a beautifully animated border to message containers */
 
-/* Animated border effect for special containers */
+
+
 .message-container.glitter {
     position: relative;
     overflow: visible;
 }
 
-/* Create animated border */
+
 .message-container.glitter::before {
     content: '';
     position: absolute;
@@ -25,14 +25,14 @@
     opacity: 0.7;
 }
 
-/* Animated movement of gradient */
+
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
 
-/* Add floating animation to dedication photo */
+
 .dedication-photo {
     animation: gentle-float 6s ease-in-out infinite;
 }
@@ -46,7 +46,7 @@
     }
 }
 
-/* Enhanced 3D pop effect for signature */
+
 .pop-3d {
     transform-style: preserve-3d;
     perspective: 1000px;

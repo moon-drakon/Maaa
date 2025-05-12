@@ -1,6 +1,6 @@
-/* Advanced animations for Mother's Day website */
 
-/* Animated Background Gradient */
+
+
 .animated-bg {
     background: linear-gradient(-45deg, #ff70a6, #ff9ebc, #b19cd9, #9370db, #5e2ca5);
     background-size: 400% 400%;
@@ -19,7 +19,7 @@
     100% { background-position: 0% 50% }
 }
 
-/* Parallax Scrolling Effect */
+
 .parallax-container {
     perspective: 1px;
     height: 100vh;
@@ -45,7 +45,7 @@
     transform: translateZ(0);
 }
 
-/* Fancy Text Effects */
+
 .fancy-text {
     background: linear-gradient(to right, #ff70a6, #9370db);
     -webkit-background-clip: text;
@@ -61,7 +61,7 @@
     }
 }
 
-/* Glitter Effect for elements */
+
 .glitter {
     position: relative;
     overflow: hidden;
@@ -93,7 +93,7 @@
     }
 }
 
-/* 3D Pop Effect on Hover */
+
 .pop-3d {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
@@ -105,7 +105,7 @@
     z-index: 10;
 }
 
-/* Liquid Button Effect */
+
 .liquid-btn {
     position: relative;
     padding: 15px 30px;
@@ -145,7 +145,7 @@
     }
 }
 
-/* Pulsing Hearts */
+
 .pulsing-heart {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -167,7 +167,7 @@
     }
 }
 
-/* Spotlight Effect */
+
 .spotlight-container {
     position: relative;
     overflow: hidden;
@@ -184,7 +184,7 @@
     pointer-events: none;
 }
 
-/* Typewriter Effect */
+
 .typewriter {
     overflow: hidden;
     border-right: 0.15em solid #ff70a6;
@@ -203,7 +203,7 @@
     50% { border-color: #ff70a6 }
 }
 
-/* 3D Card Flip */
+
 .flip-card {
     perspective: 1000px;
     width: 100%;
@@ -244,7 +244,7 @@
     transform: rotateY(180deg);
 }
 
-/* Floating Photos Gallery */
+
 .floating-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -287,7 +287,7 @@
     }
 }
 
-/* Custom Page Transition */
+
 .page-transition {
     position: fixed;
     top: 0;

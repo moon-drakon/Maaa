@@ -1,6 +1,6 @@
-/* smooth-transitions.css - Eliminates page transition lag */
 
-/* Base animation for page transitions */
+
+
 body {
     opacity: 1;
     transition: opacity 0.3s ease;
@@ -10,7 +10,7 @@ body.fade-out {
     opacity: 0;
 }
 
-/* Pre-load animation for smoother experience */
+
 .page-loader {
     position: fixed;
     top: 0;
@@ -31,7 +31,7 @@ body.fade-out {
     pointer-events: none;
 }
 
-/* Optimize image loading */
+
 img {
     will-change: opacity;
     transition: opacity 0.3s ease;
@@ -41,12 +41,12 @@ img:not([src]) {
     visibility: hidden;
 }
 
-/* For links that navigate between pages */
+
 a {
     transition: color 0.2s ease;
 }
 
-/* Performance optimizations */
+
 .parallax-container,
 .spotlight-container,
 .tilt-effect,
@@ -54,19 +54,19 @@ a {
     will-change: transform;
 }
 
-/* Optimize transitions for smoother page navigation */
+
 * {
     backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scrolling for page */
+
 html {
     scroll-behavior: smooth;
 }
 
-/* CSS transitions for elements that appear with JS */
+
 .hearts-container div,
 .flowers-container div {
     transition: transform 0.3s ease, opacity 0.3s ease;

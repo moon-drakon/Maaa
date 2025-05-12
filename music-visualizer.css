@@ -1,4 +1,4 @@
-/* Music Visualizer CSS */
+
 
 .music-visualizer-container {
     position: fixed;
@@ -21,7 +21,7 @@
     pointer-events: none;
 }
 
-/* Music Controls */
+
 .music-controls {
     position: absolute;
     bottom: 0;
@@ -114,7 +114,7 @@
     text-align: center;
 }
 
-/* Active state for music controls */
+
 .music-controls.active {
     opacity: 1;
 }

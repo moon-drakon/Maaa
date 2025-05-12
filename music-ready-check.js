@@ -1,8 +1,8 @@
-// music-ready-check.js - Additional validation for music player functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music ready check initializing...');
     
-    // Wait for all music systems to initialize
+    
     setTimeout(checkMusicSystem, 2000);
     
     function checkMusicSystem() {
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Verify audio source
+        
         let hasValidSource = false;
         
-        // Check for source elements
+        
         if (audioElement.querySelector('source')) {
             hasValidSource = true;
         } else if (audioElement.src) {
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Verify event handlers
+        
         if (typeof playButton.onclick !== 'function' && 
             playButton._events === undefined && 
             playButton.eventListenerList === undefined) {
             console.warn('Play button may not have event handlers');
             
-            // Add a simple handler just in case
+            
             playButton.addEventListener('click', function() {
                 console.log('Backup click handler triggered');
                 if (audioElement && audioElement.paused) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function repairMusicSystem() {
         console.log('Attempting to repair music system...');
         
-        // Check if audio element needs recreation
+        
         let audioElement = document.getElementById('background-music');
         if (!audioElement) {
             audioElement = document.createElement('audio');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Recreated audio element');
         }
         
-        // Check if music controls need recreation
+        
         let controls = document.getElementById('music-controls');
         if (!controls) {
             controls = document.createElement('div');
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(controls);
             console.log('Recreated music controls');
             
-            // Re-initialize event handlers
+            
             if (typeof enableDirectAudio === 'function') {
                 enableDirectAudio();
             }

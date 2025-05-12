@@ -1,38 +1,38 @@
-// Advanced interactive effects for Mother's Day website
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all advanced effects
+    
     initAdvancedEffects();
 });
 
 function initAdvancedEffects() {
-    // Add animated background
+    
     createAnimatedBackground();
     
-    // Add interactive spotlight effect
+    
     initSpotlightEffect();
     
-    // Create random floating hearts
+    
     createRandomHearts();
     
-    // Add smooth page transitions
+    
     setupPageTransitions();
     
-    // Add parallax effect for scrolling
+    
     setupParallaxEffect();
     
-    // Initialize 3D tilt effect on photos
+    
     init3DTiltEffect();
 }
 
-// Create animated gradient background
+
 function createAnimatedBackground() {
     const bg = document.createElement('div');
     bg.className = 'animated-bg';
     document.body.prepend(bg);
 }
 
-// Create interactive spotlight effect that follows the mouse
+
 function initSpotlightEffect() {
     const containers = document.querySelectorAll('.spotlight-container');
     
@@ -59,16 +59,16 @@ function initSpotlightEffect() {
     });
 }
 
-// Create randomly positioned and timed pulsing hearts
+
 function createRandomHearts() {
     const container = document.body;
     
-    // Create 15 hearts at random positions
+    
     for (let i = 0; i < 15; i++) {
         createPulsingHeart(container);
     }
     
-    // Continue adding hearts at intervals
+    
     setInterval(() => {
         createPulsingHeart(container);
     }, 3000);
@@ -78,45 +78,45 @@ function createPulsingHeart(container) {
     const heart = document.createElement('div');
     heart.className = 'pulsing-heart';
     
-    // Set random position
+    
     const x = Math.random() * 100;
     const y = Math.random() * 100;
     
-    // Set random size
+    
     const size = Math.random() * 20 + 15;
     
-    // Set random color from pink/purple palette
+    
     const colors = ['#ff70a6', '#ff9ebc', '#b19cd9', '#9370db'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     
-    // Create heart shape
+    
     heart.innerHTML = '<svg viewBox="0 0 512 512" width="100%" height="100%"><path fill="' + color + '" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>';
     
-    // Apply styles
+    
     heart.style.left = `${x}%`;
     heart.style.top = `${y}%`;
     heart.style.width = `${size}px`;
     heart.style.height = `${size}px`;
     
-    // Remove element after animation completes
+    
     heart.addEventListener('animationend', () => {
         if (container.contains(heart)) {
             container.removeChild(heart);
         }
     });
     
-    // Add to container
+    
     container.appendChild(heart);
 }
 
-// Smooth transition between pages
+
 function setupPageTransitions() {
-    // Create transition element
+    
     const transition = document.createElement('div');
     transition.className = 'page-transition';
     document.body.appendChild(transition);
     
-    // Get all links to pages within the site
+    
     const internalLinks = document.querySelectorAll('a[href^="index"], a[href^="gallery"], a[href^="dedication"]');
     
     internalLinks.forEach(link => {
@@ -124,10 +124,10 @@ function setupPageTransitions() {
             e.preventDefault();
             const target = this.getAttribute('href');
             
-            // Trigger transition
+            
             transition.classList.add('active');
             
-            // Navigate to new page after transition
+            
             setTimeout(() => {
                 window.location.href = target;
             }, 600);
@@ -135,7 +135,7 @@ function setupPageTransitions() {
     });
 }
 
-// Setup parallax scrolling effect
+
 function setupParallaxEffect() {
     if (document.querySelector('.parallax-container')) {
         window.addEventListener('scroll', () => {
@@ -149,7 +149,7 @@ function setupParallaxEffect() {
     }
 }
 
-// Add 3D tilt effect to images
+
 function init3DTiltEffect() {
     const elements = document.querySelectorAll('.tilt-effect');
     
@@ -176,15 +176,15 @@ function init3DTiltEffect() {
     });
 }
 
-// Create photo gallery with 3D effect and transitions
+
 function createFloatingGallery(container, images) {
     if (!container) return;
     
-    // Create gallery container
+    
     const gallery = document.createElement('div');
     gallery.className = 'floating-gallery';
     
-    // Add images
+    
     images.forEach(img => {
         const photoDiv = document.createElement('div');
         photoDiv.className = 'floating-photo tilt-effect';
@@ -196,7 +196,7 @@ function createFloatingGallery(container, images) {
         photoDiv.appendChild(imgElement);
         gallery.appendChild(photoDiv);
         
-        // Add click event to show full screen
+        
         photoDiv.addEventListener('click', () => {
             createFullscreenView(img.src);
         });
@@ -205,7 +205,7 @@ function createFloatingGallery(container, images) {
     container.appendChild(gallery);
 }
 
-// Create fullscreen image view
+
 function createFullscreenView(imgSrc) {
     const fullscreen = document.createElement('div');
     fullscreen.className = 'fullscreen-view';
@@ -235,13 +235,13 @@ function createFullscreenView(imgSrc) {
     fullscreen.appendChild(img);
     document.body.appendChild(fullscreen);
     
-    // Animate in
+    
     setTimeout(() => {
         fullscreen.style.opacity = '1';
         img.style.transform = 'scale(1)';
     }, 10);
     
-    // Close on click
+    
     fullscreen.addEventListener('click', () => {
         fullscreen.style.opacity = '0';
         setTimeout(() => {

@@ -1,8 +1,8 @@
-// welcome-notice.js - Shows a welcome notification for first-time visitors
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if this is user's first visit
+    
     if (!localStorage.getItem('hasVisitedBefore')) {
-        // Create welcome notification
+        
         const welcomeNotice = document.createElement('div');
         welcomeNotice.className = 'welcome-notice';
         welcomeNotice.innerHTML = `
@@ -15,18 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(welcomeNotice);
 
-        // Add event listener to close button
+        
         document.getElementById('close-notice').addEventListener('click', () => {
             welcomeNotice.classList.add('fade-out');
             setTimeout(() => {
                 welcomeNotice.remove();
             }, 500);
             
-            // Mark that user has visited before
+            
             localStorage.setItem('hasVisitedBefore', 'true');
         });
 
-        // Auto-hide after 8 seconds
+        
         setTimeout(() => {
             if (document.body.contains(welcomeNotice)) {
                 welcomeNotice.classList.add('fade-out');

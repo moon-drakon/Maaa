@@ -1,8 +1,8 @@
-// music-help-tooltip.js - Adds a tooltip for music keyboard shortcuts
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Music help tooltip initializing...');
     
-    // Wait for music controls to be ready
+    
     setTimeout(createMusicHelpTooltip, 1000);
     
     function createMusicHelpTooltip() {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Create help icon
+        
         const helpIcon = document.createElement('span');
         helpIcon.innerHTML = '?';
         helpIcon.className = 'music-help-icon';
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         helpIcon.style.fontWeight = 'bold';
         helpIcon.style.transition = 'all 0.2s ease';
         
-        // Create tooltip
+        
         const tooltip = document.createElement('div');
         tooltip.className = 'music-help-tooltip';
         tooltip.style.position = 'absolute';
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tooltip.style.marginBottom = '10px';
         tooltip.style.pointerEvents = 'none';
         
-        // Add content to tooltip
+        
         tooltip.innerHTML = `
             <h4 style="margin-top: 0; color: #ff6b6b;">Music Controls</h4>
             <p style="margin-bottom: 5px;"><strong>Space</strong> - Play/Pause music</p>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <p style="margin-bottom: 0;"><strong>Ctrl + ↑/↓</strong> - Volume up/down</p>
         `;
         
-        // Add hover effect for help icon
+        
         helpIcon.onmouseenter = function() {
             tooltip.style.visibility = 'visible';
             tooltip.style.opacity = '1';
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             helpIcon.style.color = '#ff6b6b';
         };
         
-        // Add tooltip to controls
+        
         musicControls.appendChild(tooltip);
         musicControls.appendChild(helpIcon);
         

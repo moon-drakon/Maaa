@@ -32,22 +32,22 @@ function createImprovedMusicPlayer() {
         }
     });
     
-    // Header with title
+    
     const playerHeader = document.createElement('div');
     playerHeader.className = 'player-header';
     playerHeader.innerHTML = '<i class="fas fa-music"></i> Mom\'s Special Song';
     
-    // Main controls section
+    
     const playerControls = document.createElement('div');
     playerControls.className = 'improved-player-controls';
     
-    // Play/Pause button
+    
     const playPauseBtn = document.createElement('button');
     playPauseBtn.id = 'play-pause-button';
     playPauseBtn.className = 'play-pause-btn';
     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
     
-    // Volume controls with icon
+    
     const volumeControl = document.createElement('div');
     volumeControl.className = 'improved-volume-control';
     
@@ -63,27 +63,27 @@ function createImprovedMusicPlayer() {
     volumeSlider.id = 'volume-slider';
     volumeSlider.className = 'improved-volume-slider';
     
-    // Now playing indicator with animation
+    
     const nowPlaying = document.createElement('div');
     nowPlaying.className = 'now-playing';
     nowPlaying.innerHTML = '<div class="playing-animation"><span></span><span></span><span></span><span></span><span></span></div>';
     nowPlaying.style.display = 'none';
-      // Audio element
+      
     const audioElement = document.createElement('audio');
     audioElement.id = 'background-music';
     audioElement.loop = true;
     audioElement.preload = 'auto';
     
-    // Add multiple sources for better compatibility
-    const musicSources = [        // Local file first - this will work even without internet
+    
+    const musicSources = [        
         { src: 'audio/moms-song.mp3', type: 'audio/mp3' },
-        // Remote fallbacks
-        { src: 'https://www.chosic.com/wp-content/uploads/2021/04/Beautiful-Piano-Meditation.mp3', type: 'audio/mp3' },
-        { src: 'https://www.bensound.com/bensound-music/bensound-memories.mp3', type: 'audio/mp3' },
-        { src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', type: 'audio/mp3' }
+        
+        { src: 'https:
+        { src: 'https:
+        { src: 'https:
     ];
     
-    // Add sources to audio element
+    
     musicSources.forEach(source => {
         const sourceElement = document.createElement('source');
         sourceElement.src = source.src;
@@ -91,32 +91,32 @@ function createImprovedMusicPlayer() {
         audioElement.appendChild(sourceElement);
     });
     
-    // Error handling for audio
+    
     audioElement.addEventListener('error', function(e) {
         console.error('Error loading audio:', e);
         alert('Sorry, there was an error loading the music. Please try refreshing the page.');
     });
     
-    // Assemble volume control
+    
     volumeControl.appendChild(volumeIcon);
     volumeControl.appendChild(volumeSlider);
     
-    // Assemble player controls
+    
     playerControls.appendChild(playPauseBtn);
     playerControls.appendChild(nowPlaying);
     playerControls.appendChild(volumeControl);
     
-    // Assemble the player
+    
     playerContainer.appendChild(playerHeader);
     playerContainer.appendChild(playerControls);
     playerContainer.appendChild(audioElement);
-      // Add to body
+      
     document.body.appendChild(playerContainer);
     
-    // Make sure audio loads properly
+    
     audioElement.load();
     
-    // Dispatch event that player has been created
+    
     const event = new CustomEvent('musicPlayerCreated');
     document.dispatchEvent(event);
 }
@@ -129,12 +129,12 @@ function initImprovedMusicPlayer() {
     const volumeIcon = document.querySelector('.volume-icon');
     const playerContainer = document.querySelector('.improved-music-player');
     
-    // Function to keep player visible during interaction
+    
     function keepPlayerVisible() {
         if (playerContainer.classList.contains('minimized')) {
             playerContainer.classList.remove('minimized');
             
-            // Set up auto-hide again
+            
             if (!music.paused) {
                 clearTimeout(window.playerHideTimeout);
                 window.playerHideTimeout = setTimeout(() => {
@@ -146,32 +146,32 @@ function initImprovedMusicPlayer() {
         }
     }
     
-    // Set initial volume
+    
     music.volume = volumeSlider.value / 100;
     
-    // Auto-play check and handling
+    
     const attemptAutoPlay = function() {
         const playPromise = music.play();
         
         if (playPromise !== undefined) {
             playPromise.then(_ => {
-                // Autoplay started successfully
+                
                 updatePlayPauseButton(true);
             }).catch(error => {
-                // Auto-play was prevented, show play button
+                
                 updatePlayPauseButton(false);
                 console.log('Autoplay prevented. Please click to play.');
             });
         }
     };
     
-    // Attempt autoplay when document is clicked
+    
     document.addEventListener('click', function() {
         if (music.paused) {
             attemptAutoPlay();
         }
     }, { once: true });
-      // Play/Pause toggle
+      
     playPauseBtn.addEventListener('click', function() {
         keepPlayerVisible();
         
@@ -189,14 +189,14 @@ function initImprovedMusicPlayer() {
             updatePlayPauseButton(false);
         }
     });
-      // Volume slider functionality
+      
     volumeSlider.addEventListener('input', function() {
         keepPlayerVisible();
         
         const volume = this.value / 100;
         music.volume = volume;
         
-        // Update volume icon based on level
+        
         if (volume === 0) {
             volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
         } else if (volume < 0.5) {
@@ -205,7 +205,7 @@ function initImprovedMusicPlayer() {
             volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
         }
     });
-      // Update the play/pause button and animation
+      
     function updatePlayPauseButton(isPlaying) {
         const playerContainer = document.querySelector('.improved-music-player');
         
@@ -213,7 +213,7 @@ function initImprovedMusicPlayer() {
             playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             nowPlaying.style.display = 'block';
             
-            // Auto-hide the player after 3 seconds when playing
+            
             setTimeout(() => {
                 if (!music.paused) {
                     playerContainer.classList.add('minimized');
@@ -223,25 +223,25 @@ function initImprovedMusicPlayer() {
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
             nowPlaying.style.display = 'none';
             
-            // Show full player when paused
+            
             playerContainer.classList.remove('minimized');
         }
     }
     
-    // Music ended event
+    
     music.addEventListener('ended', function() {
-        // This shouldn't happen with loop=true, but just in case
+        
         updatePlayPauseButton(false);
     });
     
-    // Music canplaythrough event
+    
     music.addEventListener('canplaythrough', function() {
         console.log('Audio ready to play');
     });
     
-    // Add keyboard shortcuts
+    
     document.addEventListener('keydown', function(e) {
-        // Spacebar for play/pause
+        
         if (e.code === 'Space' && e.target === document.body) {            e.preventDefault();
             playPauseBtn.click();
         }

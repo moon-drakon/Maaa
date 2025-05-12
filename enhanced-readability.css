@@ -1,12 +1,12 @@
-/* Enhanced text readability styles */
 
-/* General text improvements */
+
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
-/* Improved message container for better readability */
+
 .message-container {
     position: relative;
     padding: 2rem;
@@ -19,7 +19,7 @@ body {
     text-align: left;
 }
 
-/* Better text formatting */
+
 .promise-message {
     width: 100%;
     display: block;
@@ -37,7 +37,7 @@ body {
     word-spacing: 1px;
 }
 
-/* Style for quotes */
+
 .animated-text span {
     display: block;
     width: 100%;
@@ -58,7 +58,7 @@ body {
     font-family: Georgia, serif;
 }
 
-/* Make sure elephant and ants story text is visible */
+
 .typewriter {
     display: inline;
     overflow: visible;
@@ -67,12 +67,12 @@ body {
     word-wrap: break-word;
 }
 
-/* Better paragraph spacing */
+
 .animated-text p {
     margin-bottom: 15px;
 }
 
-/* Enhance signature */
+
 .signature {
     margin-top: 2rem;
     font-style: italic;
@@ -84,19 +84,19 @@ body {
     padding-top: 15px;
 }
 
-/* Custom blockquote style for the elephants and ants story */
+
 .story-highlight {
-    background: rgba(255, 112, 166, 0.15); /* Slightly darker background */
-    border-left: 5px solid #ff70a6; /* Thicker border */
-    padding: 20px 25px; /* More padding */
-    margin: 20px 0; /* More margin */
+    background: rgba(255, 112, 166, 0.15); 
+    border-left: 5px solid #ff70a6; 
+    padding: 20px 25px; 
+    margin: 20px 0; 
     border-radius: 0 10px 10px 0;
     position: relative;
-    z-index: 5; /* Ensure story highlight is above animations */
-    box-shadow: 0 5px 15px rgba(255, 112, 166, 0.2); /* Subtle shadow */
+    z-index: 5; 
+    box-shadow: 0 5px 15px rgba(255, 112, 166, 0.2); 
 }
 
-/* Letter styling */
+
 .letter-container {
     max-width: 800px;
     width: 100%;
@@ -115,7 +115,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .animated-text {
         font-size: 1.2rem;

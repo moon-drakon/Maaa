@@ -1,6 +1,6 @@
-/* === Enhanced Animations and Effects === */
 
-/* Floating balloons animation */
+
+
 .balloon {
     position: absolute;
     width: 30px;
@@ -33,7 +33,7 @@
     }
 }
 
-/* Ribbon styles */
+
 .ribbon {
     width: 150px;
     height: 150px;
@@ -89,7 +89,7 @@
     font-weight: bold;
 }
 
-/* Sparkle effect for images */
+
 .sparkle {
     position: relative;
 }
@@ -116,7 +116,7 @@
     }
 }
 
-/* Enhanced letter hover effect */
+
 .letter {
     transition: all 0.5s ease !important;
     position: relative;
@@ -161,7 +161,7 @@
     }
 }
 
-/* Enhanced button animations */
+
 .carousel-nav button {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
@@ -204,7 +204,7 @@
     }
 }
 
-/* Music player styles */
+
 .music-player {
     position: fixed;
     bottom: 20px;
@@ -293,7 +293,7 @@
     cursor: pointer;
 }
 
-/* Enhanced background animation */
+
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
@@ -311,7 +311,7 @@ body {
     animation: gradientAnimation 15s ease infinite;
 }
 
-/* Page Loader */
+
 .page-loader {
     position: fixed;
     top: 0;

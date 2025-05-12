@@ -1,6 +1,6 @@
-/* music-visual-indicator.css - Provides visual cues that music is playing */
 
-/* Music activity indicator that appears when music is playing */
+
+
 .music-activity {
     position: fixed;
     bottom: 70px;

@@ -1,13 +1,8 @@
-/* 3D Visualization Effects CSS */
-
-/* Holographic Scene Base */
 .holographic-scene {
     transform-style: preserve-3d;
     perspective: 1000px;
     transition: transform 0.1s ease-out;
 }
-
-/* Reflection Overlay */
 .reflection-overlay {
     position: absolute;
     top: 0;
@@ -19,7 +14,7 @@
     border-radius: inherit;
 }
 
-/* 3D Decorative Elements */
+
 .decorative-3d-element {
     position: absolute;
     background: rgba(255, 255, 255, 0.2);
@@ -31,7 +26,6 @@
     opacity: 0.6;
 }
 
-/* Element Shapes */
 .shape-heart {
     -webkit-clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
     clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
@@ -49,7 +43,6 @@
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-/* Float Animation */
 @keyframes float {
     0%, 100% {
         transform: translateZ(20px) translateY(0) rotate(0deg);
@@ -65,7 +58,6 @@
     }
 }
 
-/* 3D Card with Depth Effect */
 .depth-card {
     position: relative;
     background: rgba(255, 255, 255, 0.1);
@@ -103,7 +95,6 @@
     opacity: 1;
 }
 
-/* 3D Layers with Depth */
 .depth-layer-1, .depth-layer-2, .depth-layer-3 {
     will-change: transform;
     transition: transform 0.1s ease-out;
@@ -121,7 +112,6 @@
     transform: translateZ(60px);
 }
 
-/* Enhanced Floating Photo Effect */
 .enhanced-floating-photo {
     position: relative;
     transform-style: preserve-3d;
@@ -154,7 +144,6 @@
     opacity: 0.5;
 }
 
-/* Glass Morphism Elements */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -166,7 +155,6 @@
     transform-style: preserve-3d;
 }
 
-/* Enhanced Hero Animation */
 .enhanced-hero-image {
     position: relative;
     display: inline-block;
@@ -188,7 +176,6 @@
     }
 }
 
-/* Enhanced Background with Depth */
 .depth-background {
     position: relative;
     overflow: hidden;

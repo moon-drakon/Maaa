@@ -1,4 +1,4 @@
-/* welcome-notice.css - Styles for the welcome notification */
+
 
 .welcome-notice {
     position: fixed;
@@ -77,7 +77,7 @@
     }
 }
 
-/* Media query for smaller screens */
+
 @media (max-width: 480px) {
     .welcome-notice {
         width: 95%;

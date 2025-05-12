@@ -1,6 +1,6 @@
-/* Improved Music Player CSS */
 
-/* Main player container */
+
+
 .improved-music-player {
     position: fixed;
     bottom: 20px;
@@ -16,7 +16,7 @@
     border: 2px solid rgba(255, 112, 166, 0.5);
 }
 
-/* Mini player when music is playing */
+
 .improved-music-player.minimized {
     width: 60px;
     height: 60px;
@@ -27,7 +27,7 @@
     opacity: 0.7;
 }
 
-/* Show full player on hover even when minimized */
+
 .improved-music-player.minimized:hover {
     width: 250px;
     height: auto;
@@ -42,7 +42,7 @@
     width: 250px;
 }
 
-/* Player header */
+
 .player-header {
     font-size: 1rem;
     font-weight: bold;
@@ -53,7 +53,7 @@
     border-bottom: 1px solid rgba(142, 68, 173, 0.2);
 }
 
-/* Styling for minimized player */
+
 .improved-music-player.minimized .player-header,
 .improved-music-player.minimized .improved-volume-control {
     display: none;
@@ -72,7 +72,7 @@
     color: #ff70a6;
 }
 
-/* Player controls */
+
 .improved-player-controls {
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@
     gap: 12px;
 }
 
-/* Play/Pause button */
+
 .play-pause-btn {
     width: 45px;
     height: 45px;
@@ -106,7 +106,7 @@
     transform: scale(0.95);
 }
 
-/* Now playing animation */
+
 .now-playing {
     display: flex;
     align-items: center;
@@ -164,7 +164,7 @@
     }
 }
 
-/* Volume control */
+
 .improved-volume-control {
     display: flex;
     align-items: center;
@@ -216,7 +216,7 @@
     border: none;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .improved-music-player {
         width: 180px;

@@ -1,13 +1,13 @@
-// Improved Gallery JavaScript
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on the gallery page
+    
     if (document.querySelector('.gallery-page')) {
         improveGallery();
     }
 });
 
 function improveGallery() {
-    // Get carousel container and items
+    
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
@@ -16,26 +16,26 @@ function improveGallery() {
         return;
     }
     
-    // Add link to new CSS
+    
     addStylesheet('improved-gallery.css');
     
-    // Create view toggle buttons
+    
     createViewToggles(carouselContainer, carousel, items);
     
-    // Create grid view for all images
+    
     createGridView(carouselContainer, items);
     
-    // Add modal for full-screen viewing
+    
     createModalViewer(items);
     
-    // Improve the carousel navigation
+    
     improveCarouselNavigation(carousel, items);
     
-    // Initialize with grid view by default for better visibility
+    
     toggleView('grid');
 }
 
-// Helper function to add a stylesheet
+
 function addStylesheet(href) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -43,7 +43,7 @@ function addStylesheet(href) {
     document.head.appendChild(link);
 }
 
-// Create toggle buttons for different views
+
 function createViewToggles(container, carousel, items) {
     const controls = document.createElement('div');
     controls.className = 'gallery-view-controls';
@@ -61,11 +61,11 @@ function createViewToggles(container, carousel, items) {
     controls.appendChild(carouselBtn);
     controls.appendChild(gridBtn);
     
-    // Insert before the carousel container
+    
     container.parentNode.insertBefore(controls, container);
 }
 
-// Create grid view for all images
+
 function createGridView(container, items) {
     const gridView = document.createElement('div');
     gridView.className = 'gallery-grid-view';
@@ -89,7 +89,7 @@ function createGridView(container, items) {
         gridItem.appendChild(gridImg);
         gridItem.appendChild(gridCaption);
         
-        // Add click event to open in modal
+        
         gridItem.addEventListener('click', function() {
             openModal(parseInt(this.getAttribute('data-index')));
         });
@@ -97,11 +97,11 @@ function createGridView(container, items) {
         gridView.appendChild(gridItem);
     });
     
-    // Insert after the carousel container
+    
     container.parentNode.insertBefore(gridView, container.nextSibling);
 }
 
-// Toggle between carousel and grid views
+
 function toggleView(view) {
     const carouselContainer = document.querySelector('.carousel-container');
     const gridView = document.querySelector('.gallery-grid-view');
@@ -121,7 +121,7 @@ function toggleView(view) {
     }
 }
 
-// Create modal for fullscreen viewing
+
 function createModalViewer(items) {
     const modal = document.createElement('div');
     modal.className = 'gallery-modal';
@@ -163,7 +163,7 @@ function createModalViewer(items) {
     
     document.body.appendChild(modal);
     
-    // Configure modal navigation
+    
     modal.setAttribute('data-current-index', '0');
     
     prevBtn.addEventListener('click', function() {
@@ -174,7 +174,7 @@ function createModalViewer(items) {
         navigateModal('next');
     });
     
-    // Add keyboard navigation
+    
     document.addEventListener('keydown', function(e) {
         if (!modal.classList.contains('show')) return;
         
@@ -188,7 +188,7 @@ function createModalViewer(items) {
     });
 }
 
-// Open the modal with a specific image
+
 function openModal(index) {
     const items = document.querySelectorAll('.carousel-item');
     const modal = document.querySelector('.gallery-modal');
@@ -204,17 +204,17 @@ function openModal(index) {
     modalCaption.textContent = caption.textContent;
     
     modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden'; 
 }
 
-// Close the modal
+
 function closeModal() {
     const modal = document.querySelector('.gallery-modal');
     modal.classList.remove('show');
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = ''; 
 }
 
-// Navigate through images in the modal
+
 function navigateModal(direction) {
     const modal = document.querySelector('.gallery-modal');
     const items = document.querySelectorAll('.carousel-item');
@@ -229,9 +229,9 @@ function navigateModal(direction) {
     openModal(currentIndex);
 }
 
-// Improve carousel navigation
+
 function improveCarouselNavigation(carousel, items) {
-    // Set up initial state
+    
     items.forEach((item, index) => {
         if (index === 0) {
             item.classList.add('active');
@@ -243,7 +243,7 @@ function improveCarouselNavigation(carousel, items) {
             item.style.opacity = '0';
         }
         
-        // Add click event to make the item active
+        
         item.addEventListener('click', function() {
             const currentActive = carousel.querySelector('.active');
             const currentIndex = Array.from(items).indexOf(currentActive);
@@ -256,13 +256,13 @@ function improveCarouselNavigation(carousel, items) {
                     moveCarousel('prev');
                 }
             } else {
-                // If clicking the active item, open in modal
+                
                 openModal(clickedIndex);
             }
         });
     });
     
-    // Add improved navigation for carousel
+    
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
     
@@ -275,7 +275,7 @@ function improveCarouselNavigation(carousel, items) {
     });
 }
 
-// Move the carousel to show next/prev image
+
 function moveCarousel(direction) {
     const items = document.querySelectorAll('.carousel-item');
     const currentActive = document.querySelector('.carousel-item.active');
@@ -289,21 +289,21 @@ function moveCarousel(direction) {
         newIndex = (currentIndex - 1 + items.length) % items.length;
     }
     
-    // Reset all classes
+    
     items.forEach(item => {
         item.classList.remove('active', 'prev', 'next');
         item.style.opacity = '0';
     });
     
-    // Set new active
+    
     items[newIndex].classList.add('active');
     
-    // Set new prev
+    
     const prevIndex = (newIndex - 1 + items.length) % items.length;
     items[prevIndex].classList.add('prev');
     items[prevIndex].style.opacity = '1';
     
-    // Set new next
+    
     const nextIndex = (newIndex + 1) % items.length;
     items[nextIndex].classList.add('next');
     items[nextIndex].style.opacity = '1';
