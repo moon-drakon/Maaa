@@ -36,7 +36,7 @@ Simply visit the website and navigate through the pages to experience the tribut
 
 ## Deployment
 
-This website is hosted using GitHub Pages. The live version can be accessed at [https://YOUR-USERNAME.github.io/mothers-day-tribute](https://moon-drakon.github.io/Maaa/) (update with your actual URL after deployment).
+This website is hosted using GitHub Pages. The live version can be accessed at https://moon-drakon.github.io/Maaa/ (update with your actual URL after deployment).
 
 ## Credits
 
